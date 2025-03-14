@@ -1,0 +1,56 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Projet_atlantik
+{
+    public partial class port : Form
+    {
+        private MySqlConnection maCnx;
+        public port(MySqlConnection connection)
+        {
+            InitializeComponent();
+        }
+
+        private void port_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxPort_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAjoutPort_Click(object sender, EventArgs e)
+        {
+            {
+                if (!string.IsNullOrWhiteSpace(tbxPort.Text))
+                {
+                    try
+                    {
+                        string query = "INSERT INTO port (NOM) VALUES (@nom);";
+                        using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                        {
+                            cmd.Parameters.AddWithValue("@nom", tbxPort.Text);
+                            cmd.ExecuteNonQuery();
+                        }
+                        MessageBox.Show(tbxPort.Text + " ajouté avec succès.");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
+                    }
+                }
+
+            }
+        }
+    }
+}

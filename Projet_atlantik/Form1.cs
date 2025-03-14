@@ -11,11 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace ProjetAtlantik
 {
-    public partial class Form1 : Form
+    public partial class Secteur : Form
     {
         private MySqlConnection maCnx;
 
-        public Form1(MySqlConnection connection)
+        public Secteur(MySqlConnection connection)
         {
             InitializeComponent();
             this.maCnx = connection;
@@ -23,7 +23,7 @@ namespace ProjetAtlantik
 
         private void tbxSecteur_TextChanged(object sender, EventArgs e)
         {
-            // Logique si nécessaire
+          
         }
 
         private void btnSecteur_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace ProjetAtlantik
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Erreur lors de l'ajout du secteur : " + ex.Message);
+                    MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
                 }
             }
             

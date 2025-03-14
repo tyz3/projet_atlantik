@@ -1,6 +1,6 @@
 ﻿namespace ProjetAtlantik
 {
-    partial class Form1
+    partial class Secteur
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -30,7 +30,7 @@
         {
             this.tbxSecteur = new System.Windows.Forms.TextBox();
             this.btnSecteur = new System.Windows.Forms.Button();
-            this.nomSecteur = new System.Windows.Forms.Label();
+            this.txtNomSecteur = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbxSecteur
@@ -52,25 +52,25 @@
             this.btnSecteur.UseVisualStyleBackColor = true;
             this.btnSecteur.Click += new System.EventHandler(this.btnSecteur_Click);
             // 
-            // nomSecteur
+            // txtNomSecteur
             // 
-            this.nomSecteur.AutoSize = true;
-            this.nomSecteur.Location = new System.Drawing.Point(12, 9);
-            this.nomSecteur.Name = "nomSecteur";
-            this.nomSecteur.Size = new System.Drawing.Size(70, 13);
-            this.nomSecteur.TabIndex = 2;
-            this.nomSecteur.Text = "Nom secteur:";
+            this.txtNomSecteur.AutoSize = true;
+            this.txtNomSecteur.Location = new System.Drawing.Point(12, 9);
+            this.txtNomSecteur.Name = "txtNomSecteur";
+            this.txtNomSecteur.Size = new System.Drawing.Size(70, 13);
+            this.txtNomSecteur.TabIndex = 2;
+            this.txtNomSecteur.Text = "Nom secteur:";
             // 
-            // Form1
+            // Secteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.nomSecteur);
+            this.Controls.Add(this.txtNomSecteur);
             this.Controls.Add(this.btnSecteur);
             this.Controls.Add(this.tbxSecteur);
-            this.Name = "Form1";
-            this.Text = "git ";
+            this.Name = "Secteur";
+            this.Text = "SECTEUR";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,7 +80,7 @@
 
         private System.Windows.Forms.TextBox tbxSecteur;
         private System.Windows.Forms.Button btnSecteur;
-        private System.Windows.Forms.Label nomSecteur;
+        private System.Windows.Forms.Label txtNomSecteur;
     }
 }
 

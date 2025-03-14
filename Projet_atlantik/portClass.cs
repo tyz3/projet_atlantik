@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Projet_atlantik
 {
-    internal class Secteur
+    internal class portClass
     {
         public string nom;
-        public int noSecteur;
+        public int noPort;
 
-        public Secteur(string nom, int noSecteur)
+        public portClass(string nom, int noPort)
         {
             this.nom = nom;
-            this.noSecteur = noSecteur;
-
-            
+            this.noPort = noPort;
 
         }
 
@@ -30,8 +28,13 @@ namespace Projet_atlantik
 
         public int GetNoSecteur()
         {
-            return noSecteur;
+            return noPort;
 
+        }
+
+        public override string ToString()
+        {
+            return nom;
         }
     }
 }

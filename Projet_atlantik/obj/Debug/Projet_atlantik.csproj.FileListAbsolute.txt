@@ -40,4 +40,5 @@ C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\bin\Debug\System.Nu
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_a.FDD8947D.Up2Date
-C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\ProjetAtlantik.Form1.resources
+C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\ProjetAtlantik.Secteur.resources
+C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.port.resources
