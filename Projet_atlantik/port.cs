@@ -17,6 +17,7 @@ namespace Projet_atlantik
         public port(MySqlConnection connection)
         {
             InitializeComponent();
+            this.maCnx = connection;
         }
 
         private void port_Load(object sender, EventArgs e)

@@ -42,3 +42,4 @@ C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\bin\Debug\System.Th
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_a.FDD8947D.Up2Date
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\ProjetAtlantik.Secteur.resources
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.port.resources
+C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.liaison.resources
