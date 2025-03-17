@@ -46,6 +46,7 @@
             this.cmbbxDepartLiaison.Name = "cmbbxDepartLiaison";
             this.cmbbxDepartLiaison.Size = new System.Drawing.Size(121, 21);
             this.cmbbxDepartLiaison.TabIndex = 0;
+            this.cmbbxDepartLiaison.SelectedIndexChanged += new System.EventHandler(this.cmbbxDepartLiaison_SelectedIndexChanged);
             // 
             // cmbbxArriveeLiaison
             // 
@@ -60,7 +61,7 @@
             this.lstbxSecteursLiaison.FormattingEnabled = true;
             this.lstbxSecteursLiaison.Location = new System.Drawing.Point(33, 45);
             this.lstbxSecteursLiaison.Name = "lstbxSecteursLiaison";
-            this.lstbxSecteursLiaison.Size = new System.Drawing.Size(120, 95);
+            this.lstbxSecteursLiaison.Size = new System.Drawing.Size(120, 108);
             this.lstbxSecteursLiaison.TabIndex = 2;
             this.lstbxSecteursLiaison.SelectedIndexChanged += new System.EventHandler(this.lstbxSecteursLiaison_SelectedIndexChanged);
             // 
