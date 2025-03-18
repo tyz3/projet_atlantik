@@ -46,6 +46,7 @@
             this.cmbbxDepartLiaison.Name = "cmbbxDepartLiaison";
             this.cmbbxDepartLiaison.Size = new System.Drawing.Size(121, 21);
             this.cmbbxDepartLiaison.TabIndex = 0;
+            this.cmbbxDepartLiaison.SelectedIndexChanged += new System.EventHandler(this.cmbbxDepartLiaison_SelectedIndexChanged);
             // 
             // cmbbxArriveeLiaison
             // 

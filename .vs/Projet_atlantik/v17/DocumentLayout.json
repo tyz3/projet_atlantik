@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\liaison.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|c:\\users\\turgis\\source\\repos\\projet_atlantik\\projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|c:\\users\\turgis\\source\\repos\\projet_atlantik\\projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|c:\\users\\turgis\\source\\repos\\projet_atlantik\\projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -68,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "secteur.cs [Design]",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\secteur.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\secteur.cs",
@@ -80,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "secteur.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\secteur.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\secteur.cs",
@@ -148,8 +148,8 @@
               "Title": "liaison.cs [Design]",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\liaison.cs",
-              "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs [Design]*",
-              "RelativeToolTip": "Projet_atlantik\\liaison.cs [Design]*",
+              "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs [Design]",
+              "RelativeToolTip": "Projet_atlantik\\liaison.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T09:34:03.851Z",
               "EditorCaption": " [Design]"
@@ -160,9 +160,9 @@
               "Title": "liaison.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\liaison.cs",
-              "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs*",
-              "RelativeToolTip": "Projet_atlantik\\liaison.cs*",
-              "ViewState": "AQIAABEAAAAAAAAAAAAwwCcAAAAAAAAA",
+              "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs",
+              "RelativeToolTip": "Projet_atlantik\\liaison.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAqwCMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T09:39:19.727Z",
               "EditorCaption": ""

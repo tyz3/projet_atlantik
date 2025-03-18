@@ -41,8 +41,8 @@ namespace Projet_atlantik
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOM FROM secteur";
-            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            string querySecteur = "SELECT NOM FROM secteur";
+            using (MySqlCommand cmd = new MySqlCommand(querySecteur, maCnx))
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -51,5 +51,24 @@ namespace Projet_atlantik
                 }
             }
         }
+
+        private void cmbbxDepartLiaison_SelectedIndexChanged(object sender, EventArgs e)
+        {
+     
+            if (maCnx.State != ConnectionState.Open)
+                maCnx.Open();
+
+            string queryPort = "SELECT NOM FROM port";
+            using (MySqlCommand cmd = new MySqlCommand(queryPort, maCnx))
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    cmbbxDepartLiaison.Items.Add(reader["NOM"].ToString());
+                }
+            }
+        }
+
+
     }
 }
