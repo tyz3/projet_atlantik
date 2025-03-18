@@ -20,28 +20,24 @@ namespace Projet_atlantik
             InitializeComponent();
             this.maCnx = connection;
 
-            //lstbxSecteursLiaison.Items.Clear();
+            List<string> secteurs = RemplirSecteurs();
+            lstbxSecteursLiaison.Items.AddRange(secteurs.ToArray());
 
-            //if (maCnx.State != ConnectionState.Open)
-            //    maCnx.Open();
+            List<string> departs = RemplirDépart();
+            cmbbxDepartLiaison.Items.AddRange(departs.ToArray());
 
-            //string query = "SELECT NOM FROM secteur";
-            // using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
-            //using (MySqlDataReader reader = cmd.ExecuteReader())
-            //{
-              //  while (reader.Read())
-                //{
-                  //  lstbxSecteursLiaison.Items.Add(reader["NOM"].ToString());
-                //}
-            //}
+
+            List<string> arrivee = RemplirArrivee();
+            cmbbxArriveeLiaison.Items.AddRange(arrivee.ToArray());
 
 
         }
 
-        
 
-        public string RemplirSecteurs()
+
+        public List<string> RemplirSecteurs()
         {
+            List<string> secteurs = new List<string>();
             lstbxSecteursLiaison.Items.Clear();
 
             if (maCnx.State != ConnectionState.Open)
@@ -53,18 +49,62 @@ namespace Projet_atlantik
             {
                 while (reader.Read())
                 {
-                    lstbxSecteursLiaison.Items.Add(reader["NOM"].ToString());
+                    string nom = reader["NOM"].ToString();
+                    secteurs.Add(nom);
                 }
             }
-            
-
+            return secteurs;
         }
+
+
+        
+            public List<string> RemplirDépart()
+            {
+                List<string> departs = new List<string>();
+                cmbbxDepartLiaison.Items.Clear();
+
+                if (maCnx.State != ConnectionState.Open)
+                    maCnx.Open();
+
+                string query = "SELECT NOM FROM port"; 
+                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string nom = reader["NOM"].ToString();
+                        departs.Add(nom);
+                    }
+                }
+                return departs;
+            }
+
+        public List<string> RemplirArrivee()
+        {
+            List<string> arrivee = new List<string>();
+            cmbbxArriveeLiaison.Items.Clear(); 
+
+            if (maCnx.State != ConnectionState.Open)
+                maCnx.Open();
+
+            string query = "SELECT NOM FROM port";
+            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    string nom = reader["NOM"].ToString();
+                    arrivee.Add(nom);
+                }
+            }
+            return arrivee;
+        }
+
 
         private void lstbxSecteursLiaison_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
 
-            RemplirSecteurs();
-            lstbxSecteursLiaison.ToString();
             
         }
 
