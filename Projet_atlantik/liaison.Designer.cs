@@ -55,6 +55,7 @@
             this.cmbbxArriveeLiaison.Name = "cmbbxArriveeLiaison";
             this.cmbbxArriveeLiaison.Size = new System.Drawing.Size(121, 21);
             this.cmbbxArriveeLiaison.TabIndex = 1;
+            this.cmbbxArriveeLiaison.SelectedIndexChanged += new System.EventHandler(this.cmbbxArriveeLiaison_SelectedIndexChanged);
             // 
             // lstbxSecteursLiaison
             // 
@@ -116,6 +117,7 @@
             this.btnAjouterLiaison.TabIndex = 8;
             this.btnAjouterLiaison.Text = "Ajouter";
             this.btnAjouterLiaison.UseVisualStyleBackColor = true;
+            this.btnAjouterLiaison.Click += new System.EventHandler(this.btnAjouterLiaison_Click);
             // 
             // liaison
             // 
@@ -133,6 +135,7 @@
             this.Controls.Add(this.cmbbxDepartLiaison);
             this.Name = "liaison";
             this.Text = "Arrivée: ";
+            this.Load += new System.EventHandler(this.liaison_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

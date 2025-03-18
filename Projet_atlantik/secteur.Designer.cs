@@ -40,7 +40,6 @@
             this.tbxSecteur.Name = "tbxSecteur";
             this.tbxSecteur.Size = new System.Drawing.Size(100, 20);
             this.tbxSecteur.TabIndex = 0;
-            this.tbxSecteur.TextChanged += new System.EventHandler(this.tbxSecteur_TextChanged);
             // 
             // btnSecteur
             // 

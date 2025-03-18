@@ -21,10 +21,7 @@ namespace ProjetAtlantik
             this.maCnx = connection;
         }
 
-        private void tbxSecteur_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
+        
 
         private void btnSecteur_Click(object sender, EventArgs e)
         {

@@ -34,6 +34,10 @@ namespace Projet_atlantik
         }
 
 
+        private void liaison_Load(object sender, EventArgs e)
+        {
+
+        }
 
         public List<string> RemplirSecteurs()
         {
@@ -105,7 +109,6 @@ namespace Projet_atlantik
         {
             
 
-            
         }
 
         private void cmbbxDepartLiaison_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,8 +116,40 @@ namespace Projet_atlantik
 
         }
 
+        private void cmbbxArriveeLiaison_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void btnAjouterLiaison_Click(object sender, EventArgs e)
+        {
+            
+                try
+                {
 
+                    string query = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE ) " +
+                    "VALUES (@numPortDepart, @numSecteur, @numPortArrivee, @Distance);";
+                    using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                    {
+                        
+                        cmd.Parameters.AddWithValue("@numPortDepart", cmbbxDepartLiaison.Text);
+                        cmd.Parameters.AddWithValue("@numSecteur", lstbxSecteursLiaison.Text);
+                        cmd.Parameters.AddWithValue("@numPortArrivee", cmbbxArriveeLiaison.Text);
+                        cmd.Parameters.AddWithValue("@Distance", tbxDistanceLiaison.Text);
+                        cmd.ExecuteNonQuery();
+                    }
+                   
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
+                }
+            
+
+        }
+
+        
     }
+   
 }
+
