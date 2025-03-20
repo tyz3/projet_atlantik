@@ -127,9 +127,11 @@ namespace Projet_atlantik
                 try
                 {
 
-                    string query = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE ) " +
-                    "VALUES (@numPortDepart, @numSecteur, @numPortArrivee, @Distance);";
-                    using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                    string query = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
+               "VALUES ((SELECT NOPORT FROM port WHERE NOM = @numPortDepart), " +
+               "(SELECT NOSECTEUR FROM secteur WHERE NOM = @numSecteur), " +
+               "(SELECT NOPORT FROM port WHERE NOM = @numPortArrivee), @Distance)";
+                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
                     {
                         
                         cmd.Parameters.AddWithValue("@numPortDepart", cmbbxDepartLiaison.Text);
