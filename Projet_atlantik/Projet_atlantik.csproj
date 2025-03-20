@@ -121,6 +121,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="secteurClass.cs" />
+    <Compile Include="tarif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tarif.Designer.cs">
+      <DependentUpon>tarif.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="secteur.resx">
       <DependentUpon>secteur.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +145,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="tarif.resx">
+      <DependentUpon>tarif.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

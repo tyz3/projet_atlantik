@@ -46,7 +46,6 @@
             this.cmbbxDepartLiaison.Name = "cmbbxDepartLiaison";
             this.cmbbxDepartLiaison.Size = new System.Drawing.Size(121, 21);
             this.cmbbxDepartLiaison.TabIndex = 0;
-            this.cmbbxDepartLiaison.SelectedIndexChanged += new System.EventHandler(this.cmbbxDepartLiaison_SelectedIndexChanged);
             // 
             // cmbbxArriveeLiaison
             // 
@@ -55,7 +54,6 @@
             this.cmbbxArriveeLiaison.Name = "cmbbxArriveeLiaison";
             this.cmbbxArriveeLiaison.Size = new System.Drawing.Size(121, 21);
             this.cmbbxArriveeLiaison.TabIndex = 1;
-            this.cmbbxArriveeLiaison.SelectedIndexChanged += new System.EventHandler(this.cmbbxArriveeLiaison_SelectedIndexChanged);
             // 
             // lstbxSecteursLiaison
             // 
@@ -64,7 +62,6 @@
             this.lstbxSecteursLiaison.Name = "lstbxSecteursLiaison";
             this.lstbxSecteursLiaison.Size = new System.Drawing.Size(120, 108);
             this.lstbxSecteursLiaison.TabIndex = 2;
-            this.lstbxSecteursLiaison.SelectedIndexChanged += new System.EventHandler(this.lstbxSecteursLiaison_SelectedIndexChanged);
             // 
             // tbxDistanceLiaison
             // 
@@ -135,7 +132,6 @@
             this.Controls.Add(this.cmbbxDepartLiaison);
             this.Name = "liaison";
             this.Text = "Arrivée: ";
-            this.Load += new System.EventHandler(this.liaison_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
