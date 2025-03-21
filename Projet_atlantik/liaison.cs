@@ -88,6 +88,7 @@ namespace Projet_atlantik
                                "VALUES ((SELECT NOPORT FROM port WHERE NOM = @numPortDepart), " +
                                "(SELECT NOSECTEUR FROM secteur WHERE NOM = @numSecteur), " +
                                "(SELECT NOPORT FROM port WHERE NOM = @numPortArrivee), @Distance)";
+                
                 using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
                 {
                     cmd.Parameters.AddWithValue("@numPortDepart", cmbbxDepartLiaison.Text);

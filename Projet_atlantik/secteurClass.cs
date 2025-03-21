@@ -1,37 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projet_atlantik
 {
-    internal class secteurClass
+    internal class Secteur
     {
-        public string nom;
-        public int noSecteur;
+        private int noSecteur;
+        private string nom;
 
-        public secteurClass(string nom, int noSecteur)
+        public Secteur(int noSecteur, string nom)
         {
-            this.nom = nom;
             this.noSecteur = noSecteur;
-
-            
-
+            this.nom = nom;
         }
-
-
-
-        public string GetNom()
-        {
-            return nom;
-        }
-
 
         public int GetNoSecteur()
         {
             return noSecteur;
+        }
 
+        public string GetNom()
+        {
+            return nom;
         }
 
         public override string ToString()

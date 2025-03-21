@@ -98,7 +98,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="liaisonClass.cs" />
+    <Compile Include="LiaisonC.cs" />
+    <Compile Include="Période.cs" />
     <Compile Include="secteur.cs">
       <SubType>Form</SubType>
     </Compile>

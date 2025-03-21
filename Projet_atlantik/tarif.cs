@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Projet_atlantik
 {
     public partial class tarif : Form
@@ -20,7 +21,8 @@ namespace Projet_atlantik
             InitializeComponent();
             this.maCnx = connection;
             RemplirSecteurs();
-
+            RemplirPeriode();
+            RemplirLiaison();
 
         }
 
@@ -46,26 +48,30 @@ namespace Projet_atlantik
 
         public void RemplirLiaison()
         {
-            cmbbxTarif.Items.Clear();
+            cmbbxTarifLiaison.Items.Clear();
 
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOM" +
-                " FROM port p " +
-                " INNER JOIN liaison l ON p.NOPORT = l.NOPORT ";
+            string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOM " +
+                       "FROM port p " +
+                       "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART";
+
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    cmbbxTarif.Items.Add(reader["NOM"].ToString());
+                   
+
+                    cmbbxTarifLiaison.Items.Add(new LiaisonTarif(reader.GetInt32("NOPORT_DEPART"),  reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM")));
                 }
             }
             maCnx.Close();
         }
 
-        private void ChargerPeriode()
+
+        private void RemplirPeriode()
         {
             string query = "SELECT datedebut, datefin, noperiode FROM periode";
 
@@ -78,13 +84,15 @@ namespace Projet_atlantik
             {
                 MySqlCommand cmd = new MySqlCommand(query, maCnx);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                {
-                    while (reader.Read())
-                    {
-                        periode pe = new periode(reader.GetDateTime("datedebut"), reader.GetDateTime("datefin"), reader.GetInt32("noPeriode"));
-                        cmbbxPeriode.Items.Add(pe);
-                    }
+                while (reader.Read())
+                { 
+                    
+                   cmbbxTarifPeriode.Items.Add(new Periode(reader.GetDateTime("datedebut"), reader.GetDateTime("datefin"), reader.GetInt32("noPeriode")));
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -96,5 +104,11 @@ namespace Projet_atlantik
         }
 
 
+
+     
+
     }
+
+    
 }
+

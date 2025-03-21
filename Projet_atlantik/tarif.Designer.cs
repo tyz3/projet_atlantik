@@ -30,11 +30,11 @@
         {
             this.gbxTarif = new System.Windows.Forms.GroupBox();
             this.lstbxTarif = new System.Windows.Forms.ListBox();
-            this.cmbbxTarif = new System.Windows.Forms.ComboBox();
+            this.cmbbxTarifLiaison = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAjouterTarif = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbbxPeriode = new System.Windows.Forms.ComboBox();
+            this.cmbbxTarifPeriode = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // gbxTarif
@@ -56,14 +56,14 @@
             this.lstbxTarif.Size = new System.Drawing.Size(191, 212);
             this.lstbxTarif.TabIndex = 1;
             // 
-            // cmbbxTarif
+            // cmbbxTarifLiaison
             // 
-            this.cmbbxTarif.BackColor = System.Drawing.SystemColors.Info;
-            this.cmbbxTarif.FormattingEnabled = true;
-            this.cmbbxTarif.Location = new System.Drawing.Point(42, 281);
-            this.cmbbxTarif.Name = "cmbbxTarif";
-            this.cmbbxTarif.Size = new System.Drawing.Size(191, 21);
-            this.cmbbxTarif.TabIndex = 2;
+            this.cmbbxTarifLiaison.BackColor = System.Drawing.SystemColors.Info;
+            this.cmbbxTarifLiaison.FormattingEnabled = true;
+            this.cmbbxTarifLiaison.Location = new System.Drawing.Point(42, 281);
+            this.cmbbxTarifLiaison.Name = "cmbbxTarifLiaison";
+            this.cmbbxTarifLiaison.Size = new System.Drawing.Size(191, 21);
+            this.cmbbxTarifLiaison.TabIndex = 2;
             // 
             // label1
             // 
@@ -92,25 +92,25 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Période:";
             // 
-            // cmbbxPeriode
+            // cmbbxTarifPeriode
             // 
-            this.cmbbxPeriode.BackColor = System.Drawing.SystemColors.Info;
-            this.cmbbxPeriode.FormattingEnabled = true;
-            this.cmbbxPeriode.Location = new System.Drawing.Point(42, 386);
-            this.cmbbxPeriode.Name = "cmbbxPeriode";
-            this.cmbbxPeriode.Size = new System.Drawing.Size(191, 21);
-            this.cmbbxPeriode.TabIndex = 6;
+            this.cmbbxTarifPeriode.BackColor = System.Drawing.SystemColors.Info;
+            this.cmbbxTarifPeriode.FormattingEnabled = true;
+            this.cmbbxTarifPeriode.Location = new System.Drawing.Point(42, 386);
+            this.cmbbxTarifPeriode.Name = "cmbbxTarifPeriode";
+            this.cmbbxTarifPeriode.Size = new System.Drawing.Size(191, 21);
+            this.cmbbxTarifPeriode.TabIndex = 6;
             // 
             // tarif
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cmbbxPeriode);
+            this.Controls.Add(this.cmbbxTarifPeriode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAjouterTarif);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbbxTarif);
+            this.Controls.Add(this.cmbbxTarifLiaison);
             this.Controls.Add(this.lstbxTarif);
             this.Controls.Add(this.gbxTarif);
             this.Name = "tarif";
@@ -124,10 +124,10 @@
 
         private System.Windows.Forms.GroupBox gbxTarif;
         private System.Windows.Forms.ListBox lstbxTarif;
-        private System.Windows.Forms.ComboBox cmbbxTarif;
+        private System.Windows.Forms.ComboBox cmbbxTarifLiaison;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAjouterTarif;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbbxPeriode;
+        private System.Windows.Forms.ComboBox cmbbxTarifPeriode;
     }
 }
