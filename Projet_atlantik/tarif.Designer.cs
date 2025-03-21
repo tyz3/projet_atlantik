@@ -55,6 +55,7 @@
             this.lstbxTarif.Name = "lstbxTarif";
             this.lstbxTarif.Size = new System.Drawing.Size(191, 212);
             this.lstbxTarif.TabIndex = 1;
+            this.lstbxTarif.SelectedIndexChanged += new System.EventHandler(this.lstbxTarif_SelectedIndexChanged);
             // 
             // cmbbxTarifLiaison
             // 
@@ -82,6 +83,7 @@
             this.btnAjouterTarif.TabIndex = 4;
             this.btnAjouterTarif.Text = "Ajouter";
             this.btnAjouterTarif.UseVisualStyleBackColor = true;
+            this.btnAjouterTarif.Click += new System.EventHandler(this.btnAjouterTarif_Click);
             // 
             // label2
             // 
@@ -115,6 +117,7 @@
             this.Controls.Add(this.gbxTarif);
             this.Name = "tarif";
             this.Text = "tarif";
+            this.Load += new System.EventHandler(this.tarif_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

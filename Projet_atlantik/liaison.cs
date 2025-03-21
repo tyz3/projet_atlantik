@@ -82,6 +82,8 @@ namespace Projet_atlantik
       
         private void btnAjouterLiaison_Click(object sender, EventArgs e)
         {
+            if (maCnx.State != ConnectionState.Open)
+                maCnx.Open();
             try
             {
                 string query = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
@@ -102,6 +104,7 @@ namespace Projet_atlantik
             {
                 MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
             }
+            maCnx.Clone();
         }
     }
 }
