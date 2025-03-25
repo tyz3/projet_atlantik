@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|c:\\users\\turgis\\source\\repos\\projet_atlantik\\projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\p\u00E9riode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\p\u00E9riode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\liaisonc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\liaisonc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\liaison.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\liaison.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\liaisonc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\liaisonc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\p\u00E9riode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\p\u00E9riode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|c:\\users\\turgis\\source\\repos\\projet_atlantik\\projet_atlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\secteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,14 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\secteurclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\secteurclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|solutionrelative:projet_atlantik\\tarif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AA808A9-0906-4415-B83A-8D0BD2390394}|Projet_atlantik\\Projet_atlantik.csproj|C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\projet_atlantik\\liaison.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -70,13 +70,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\Program.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\Program.cs",
               "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\Program.cs",
               "RelativeToolTip": "Projet_atlantik\\Program.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAADwvx4AAABGAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAiwBEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-14T15:23:59.858Z",
               "EditorCaption": ""
@@ -90,12 +90,11 @@
               "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\secteur.cs [Design]",
               "RelativeToolTip": "Projet_atlantik\\secteur.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T12:54:25.61Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-14T12:54:25.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "secteur.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\secteur.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\secteur.cs",
@@ -103,12 +102,11 @@
               "RelativeToolTip": "Projet_atlantik\\secteur.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAQwCAAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T13:04:28.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T13:04:28.032Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "secteurClass.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\secteurClass.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\secteurClass.cs",
@@ -116,24 +114,22 @@
               "RelativeToolTip": "Projet_atlantik\\secteurClass.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T13:52:47.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T13:52:47.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "port.cs [Design]",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\port.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\port.cs",
               "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\port.cs [Design]",
               "RelativeToolTip": "Projet_atlantik\\port.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T15:41:04.484Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-14T15:41:04.484Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "port.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\port.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\port.cs",
@@ -141,8 +137,7 @@
               "RelativeToolTip": "Projet_atlantik\\port.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T15:42:46.125Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T15:42:46.125Z"
             },
             {
               "$type": "Document",
@@ -176,27 +171,27 @@
               "RelativeDocumentMoniker": "Projet_atlantik\\liaison.cs",
               "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\liaison.cs",
               "RelativeToolTip": "Projet_atlantik\\liaison.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAIwFcAAAANAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAwwFcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T09:39:19.727Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "LiaisonC.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\LiaisonC.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\LiaisonC.cs",
               "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\LiaisonC.cs",
               "RelativeToolTip": "Projet_atlantik\\LiaisonC.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwAwAAAAtAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAQwCYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T15:40:29.617Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "tarif.cs [Design]",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\tarif.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\tarif.cs",
@@ -214,14 +209,14 @@
               "RelativeDocumentMoniker": "Projet_atlantik\\tarif.cs",
               "ToolTip": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\tarif.cs",
               "RelativeToolTip": "Projet_atlantik\\tarif.cs",
-              "ViewState": "AQIAAKkAAAAAAAAAAAAYwMIAAAAUAAAA",
+              "ViewState": "AQIAALwAAAAAAAAAAAAqwNgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T13:09:33.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "P\u00E9riode.cs",
               "DocumentMoniker": "C:\\Users\\turgis\\source\\repos\\Projet_atlantik\\Projet_atlantik\\P\u00E9riode.cs",
               "RelativeDocumentMoniker": "Projet_atlantik\\P\u00E9riode.cs",
