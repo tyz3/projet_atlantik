@@ -90,3 +90,4 @@ C:\Users\turgis\source\repos\Projet_atlantik\obj\Debug\Projet_atlantik.csproj.Co
 C:\Users\turgis\source\repos\Projet_atlantik\obj\Debug\Projet_atlantik.exe
 C:\Users\turgis\source\repos\Projet_atlantik\obj\Debug\Projet_atlantik.pdb
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.tarif.resources
+C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.ajouterBateau.resources

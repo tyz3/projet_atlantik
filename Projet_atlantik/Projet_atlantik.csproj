@@ -98,7 +98,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LiaisonC.cs" />
+    <Compile Include="ajouterBateau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ajouterBateau.Designer.cs">
+      <DependentUpon>ajouterBateau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LiaisonClass.cs" />
     <Compile Include="Période.cs" />
     <Compile Include="secteur.cs">
       <SubType>Form</SubType>
@@ -128,6 +134,9 @@
     <Compile Include="tarif.Designer.cs">
       <DependentUpon>tarif.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ajouterBateau.resx">
+      <DependentUpon>ajouterBateau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="secteur.resx">
       <DependentUpon>secteur.cs</DependentUpon>
     </EmbeddedResource>

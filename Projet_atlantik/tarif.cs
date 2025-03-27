@@ -19,13 +19,14 @@ namespace Projet_atlantik
         {
             InitializeComponent();
             this.maCnx = connection;
-            RemplirSecteurs();
-            RemplirLiaison();
-            RemplirPeriode();
+           
         }
 
         private void tarif_Load(object sender, EventArgs e)
         {
+            RemplirSecteurs();
+            RemplirLiaison();
+            RemplirPeriode();
             if (maCnx.State == ConnectionState.Closed)
             {
                 maCnx.Open();
@@ -214,10 +215,9 @@ namespace Projet_atlantik
 
             foreach (TextBox tbxTarif in textBoxes)
             {
-                // Vérification si le TextBox contient un tarif
                 if (!string.IsNullOrEmpty(tbxTarif.Text))
                 {
-                    tarifSaisi = true;  // Tarif trouvé, donc on active le flag
+                    tarifSaisi = true; 
                     break;
                 }
             }
