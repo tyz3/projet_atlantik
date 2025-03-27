@@ -105,7 +105,7 @@ namespace Projet_atlantik
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOM " +
+            string query = "SELECT NOLIAISON, NOPORT_DEPART, NOPORT_ARRIVEE, NOM " +
                            "FROM port p " +
                            "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART";
 
@@ -114,7 +114,8 @@ namespace Projet_atlantik
             {
                 while (reader.Read())
                 {
-                    cmbbxTarifLiaison.Items.Add(new LiaisonTarif(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM")));
+                    LiaisonTarif l = new LiaisonTarif(reader.GetInt32("NOLIAISON"), reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM"));
+                    cmbbxTarifLiaison.Items.Add(l);
                 }
             }
             maCnx.Close();
@@ -155,8 +156,7 @@ namespace Projet_atlantik
 
         private void lstbxTarif_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string secteurNom = lstbxTarif.SelectedItem.ToString();
-            ChargerLiaisonsPourSecteur(secteurNom);
+            ChargerLiaisonsPourSecteur(lstbxTarif.SelectedItem.ToString());
         }
 
         private void ChargerLiaisonsPourSecteur(string secteurNom)
@@ -166,7 +166,7 @@ namespace Projet_atlantik
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOM " +
+            string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOLIAISON, NOM " +
                            "FROM port p " +
                            "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART " +
                            "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOM = @secteurNom)";
@@ -178,7 +178,8 @@ namespace Projet_atlantik
                 {
                     while (reader.Read())
                     {
-                        cmbbxTarifLiaison.Items.Add(new LiaisonTarif(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM")));
+                        
+                        cmbbxTarifLiaison.Items.Add(new LiaisonTarif(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM")));
                     }
                 }
             }
@@ -190,29 +191,80 @@ namespace Projet_atlantik
         {
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
-            try
-            {
-                string query = "INSERT INTO tarifer (NOPERIODE, LETTRECATEGORIE, NOTYPE, NOLIAISON, TARIF) " +
-                               "VALUES (@periode, @categorie, @type, @liaison, @tarif)";
 
-                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            if (lstbxTarif.SelectedItem == null || cmbbxTarifLiaison.SelectedItem == null || cmbbxTarifPeriode.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un secteur, une liaison et une période.");
+                return;
+            }
+
+            Periode periode = (Periode)cmbbxTarifPeriode.SelectedItem;
+            LiaisonTarif liaison = (LiaisonTarif)cmbbxTarifLiaison.SelectedItem;
+
+            bool tarifSaisi = false;
+            List<TextBox> textBoxes = new List<TextBox>();
+
+            foreach (Control control in gbxTarif.Controls)
+            {
+                if (control is TextBox tbxTarif)
                 {
-                    cmd.Parameters.AddWithValue("@periode", (Periode)cmbbxTarifPeriode.SelectedItem);
-                    cmd.Parameters.AddWithValue("@categorie", lstbxTarif.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@type", gbxTarif.Text);
-                    cmd.Parameters.AddWithValue("@liaison", (LiaisonTarif)cmbbxTarifLiaison.SelectedItem);
-                    cmd.Parameters.AddWithValue("@tarif", gbxTarif.Text);
-
-                    cmd.ExecuteNonQuery();
+                    textBoxes.Add(tbxTarif);
                 }
+            }
 
-                MessageBox.Show("Ajouté avec succès.");
-            }
-            catch (MySqlException ex)
+            foreach (TextBox tbxTarif in textBoxes)
             {
-                MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
+                // Vérification si le TextBox contient un tarif
+                if (!string.IsNullOrEmpty(tbxTarif.Text))
+                {
+                    tarifSaisi = true;  // Tarif trouvé, donc on active le flag
+                    break;
+                }
             }
-            maCnx.Close();
+
+            if (!tarifSaisi)
+            {
+                MessageBox.Show("Veuillez renseigner au moins un tarif.");
+                return;
+            }
+
+
+            foreach (TextBox tbxTarif in textBoxes)
+            {
+                string lettreCategorie = tbxTarif.Tag.ToString().Substring(0, 1);
+                string type = tbxTarif.Tag.ToString().Substring(1);
+                double tarif;
+
+                if (double.TryParse(tbxTarif.Text, out tarif))
+                {
+                    string query = "INSERT INTO tarifer (NOPERIODE, LETTRECATEGORIE, NOTYPE, NOLIAISON, TARIF) " +
+                                   "VALUES (@periode, @lettrecategorie, @notype, @noliaison, @tarif)";
+
+                    try
+                    {
+                        if (maCnx.State == ConnectionState.Closed)
+                            maCnx.Open();
+
+                        MySqlCommand cmd = new MySqlCommand(query, maCnx);
+                        cmd.Parameters.AddWithValue("@periode", periode.GetNoPeriode());
+                        cmd.Parameters.AddWithValue("@lettrecategorie", lettreCategorie);
+                        cmd.Parameters.AddWithValue("@notype", type);
+                        cmd.Parameters.AddWithValue("@noliaison", liaison.GetNoLiaison());
+                        cmd.Parameters.AddWithValue("@tarif", tarif);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
+                    }
+                    finally
+                    {
+                        maCnx.Close();
+                    }
+                }
+            }
         }
+
+
     }
 }

@@ -6,13 +6,19 @@ namespace Projet_atlantik
     {
         private int noPortDepart;
         private int noPortArrivee;
-        private string numLiaison;
+        private int noLiaison;
+        private string nom;
 
-        public LiaisonTarif(int noPortDepart, int noPortArrivee, string numLiaison)
+        public LiaisonTarif(int noLiaison, int noPortDepart, int noPortArrivee, string nom)
         {
+            this.noLiaison = noLiaison;
             this.noPortDepart = noPortDepart;
             this.noPortArrivee = noPortArrivee;
-            this.numLiaison = numLiaison;
+            this.nom = nom;
+        }
+        public int GetNoLiaison()
+        {
+            return noLiaison;
         }
 
         public int GetNoPortDepart()
@@ -24,20 +30,13 @@ namespace Projet_atlantik
         {
             return noPortArrivee;
         }
-
-        public string GetNomLiaison()
+        public string GetNom()
         {
-            return numLiaison;
+            return nom;
         }
-
         public override string ToString()
         {
             return $"{noPortDepart} -> {noPortArrivee}";
-        }
-
-        public void liaisonTrajet()
-        {
-
         }
     }
 
