@@ -32,7 +32,7 @@ namespace Projet_atlantik
                 return;
             }
             /// Application.Run(new ProjetAtlantik.Secteur(maCnx));
-             Application.Run(new ajouterBateau(maCnx));
+             Application.Run(new modifierBateau(maCnx));
         }
     }
 }

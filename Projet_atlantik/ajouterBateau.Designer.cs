@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.gbxAjoutBateau = new System.Windows.Forms.GroupBox();
+            this.tbxVehiculeC = new System.Windows.Forms.TextBox();
+            this.tbxVehiculeB = new System.Windows.Forms.TextBox();
+            this.tbxPassager = new System.Windows.Forms.TextBox();
+            this.lblVehiculeC = new System.Windows.Forms.Label();
+            this.lblVehiculeB = new System.Windows.Forms.Label();
+            this.lblPassager = new System.Windows.Forms.Label();
             this.tbxAjoutBateau = new System.Windows.Forms.TextBox();
             this.lblAjouterBateau = new System.Windows.Forms.Label();
             this.btnAjoutBateau = new System.Windows.Forms.Button();
-            this.lblPassager = new System.Windows.Forms.Label();
-            this.lblVehiculeB = new System.Windows.Forms.Label();
-            this.lblVehiculeC = new System.Windows.Forms.Label();
-            this.tbxPassager = new System.Windows.Forms.TextBox();
-            this.tbxVehiculeB = new System.Windows.Forms.TextBox();
-            this.tbxVehiculeC = new System.Windows.Forms.TextBox();
             this.gbxAjoutBateau.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,54 @@
             this.gbxAjoutBateau.TabIndex = 0;
             this.gbxAjoutBateau.TabStop = false;
             this.gbxAjoutBateau.Text = "Capacités Maximales";
+            // 
+            // tbxVehiculeC
+            // 
+            this.tbxVehiculeC.Location = new System.Drawing.Point(141, 181);
+            this.tbxVehiculeC.Name = "tbxVehiculeC";
+            this.tbxVehiculeC.Size = new System.Drawing.Size(100, 20);
+            this.tbxVehiculeC.TabIndex = 5;
+            // 
+            // tbxVehiculeB
+            // 
+            this.tbxVehiculeB.Location = new System.Drawing.Point(141, 109);
+            this.tbxVehiculeB.Name = "tbxVehiculeB";
+            this.tbxVehiculeB.Size = new System.Drawing.Size(100, 20);
+            this.tbxVehiculeB.TabIndex = 4;
+            // 
+            // tbxPassager
+            // 
+            this.tbxPassager.Location = new System.Drawing.Point(141, 40);
+            this.tbxPassager.Name = "tbxPassager";
+            this.tbxPassager.Size = new System.Drawing.Size(100, 20);
+            this.tbxPassager.TabIndex = 3;
+            // 
+            // lblVehiculeC
+            // 
+            this.lblVehiculeC.AutoSize = true;
+            this.lblVehiculeC.Location = new System.Drawing.Point(17, 181);
+            this.lblVehiculeC.Name = "lblVehiculeC";
+            this.lblVehiculeC.Size = new System.Drawing.Size(112, 13);
+            this.lblVehiculeC.TabIndex = 2;
+            this.lblVehiculeC.Text = "C (Véhicule Sup. 2m) :";
+            // 
+            // lblVehiculeB
+            // 
+            this.lblVehiculeB.AutoSize = true;
+            this.lblVehiculeB.Location = new System.Drawing.Point(17, 109);
+            this.lblVehiculeB.Name = "lblVehiculeB";
+            this.lblVehiculeB.Size = new System.Drawing.Size(105, 13);
+            this.lblVehiculeB.TabIndex = 1;
+            this.lblVehiculeB.Text = "B (Véhicule Inf. 2m) :";
+            // 
+            // lblPassager
+            // 
+            this.lblPassager.AutoSize = true;
+            this.lblPassager.Location = new System.Drawing.Point(17, 40);
+            this.lblPassager.Name = "lblPassager";
+            this.lblPassager.Size = new System.Drawing.Size(76, 13);
+            this.lblPassager.TabIndex = 0;
+            this.lblPassager.Text = "A (Passager) : ";
             // 
             // tbxAjoutBateau
             // 
@@ -84,54 +132,6 @@
             this.btnAjoutBateau.UseVisualStyleBackColor = true;
             this.btnAjoutBateau.Click += new System.EventHandler(this.btnAjoutBateau_Click);
             // 
-            // lblPassager
-            // 
-            this.lblPassager.AutoSize = true;
-            this.lblPassager.Location = new System.Drawing.Point(17, 40);
-            this.lblPassager.Name = "lblPassager";
-            this.lblPassager.Size = new System.Drawing.Size(76, 13);
-            this.lblPassager.TabIndex = 0;
-            this.lblPassager.Text = "A (Passager) : ";
-            // 
-            // lblVehiculeB
-            // 
-            this.lblVehiculeB.AutoSize = true;
-            this.lblVehiculeB.Location = new System.Drawing.Point(17, 109);
-            this.lblVehiculeB.Name = "lblVehiculeB";
-            this.lblVehiculeB.Size = new System.Drawing.Size(105, 13);
-            this.lblVehiculeB.TabIndex = 1;
-            this.lblVehiculeB.Text = "B (Véhicule Inf. 2m) :";
-            // 
-            // lblVehiculeC
-            // 
-            this.lblVehiculeC.AutoSize = true;
-            this.lblVehiculeC.Location = new System.Drawing.Point(17, 181);
-            this.lblVehiculeC.Name = "lblVehiculeC";
-            this.lblVehiculeC.Size = new System.Drawing.Size(112, 13);
-            this.lblVehiculeC.TabIndex = 2;
-            this.lblVehiculeC.Text = "C (Véhicule Sup. 2m) :";
-            // 
-            // tbxPassager
-            // 
-            this.tbxPassager.Location = new System.Drawing.Point(141, 40);
-            this.tbxPassager.Name = "tbxPassager";
-            this.tbxPassager.Size = new System.Drawing.Size(100, 20);
-            this.tbxPassager.TabIndex = 3;
-            // 
-            // tbxVehiculeB
-            // 
-            this.tbxVehiculeB.Location = new System.Drawing.Point(141, 109);
-            this.tbxVehiculeB.Name = "tbxVehiculeB";
-            this.tbxVehiculeB.Size = new System.Drawing.Size(100, 20);
-            this.tbxVehiculeB.TabIndex = 4;
-            // 
-            // tbxVehiculeC
-            // 
-            this.tbxVehiculeC.Location = new System.Drawing.Point(141, 181);
-            this.tbxVehiculeC.Name = "tbxVehiculeC";
-            this.tbxVehiculeC.Size = new System.Drawing.Size(100, 20);
-            this.tbxVehiculeC.TabIndex = 5;
-            // 
             // ajouterBateau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +143,7 @@
             this.Controls.Add(this.gbxAjoutBateau);
             this.Name = "ajouterBateau";
             this.Text = "ajouterBateau";
+
             this.gbxAjoutBateau.ResumeLayout(false);
             this.gbxAjoutBateau.PerformLayout();
             this.ResumeLayout(false);

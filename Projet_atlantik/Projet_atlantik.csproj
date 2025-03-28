@@ -104,6 +104,13 @@
     <Compile Include="ajouterBateau.Designer.cs">
       <DependentUpon>ajouterBateau.cs</DependentUpon>
     </Compile>
+    <Compile Include="bateauClass.cs" />
+    <Compile Include="modifierBateau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modifierBateau.Designer.cs">
+      <DependentUpon>modifierBateau.cs</DependentUpon>
+    </Compile>
     <Compile Include="LiaisonClass.cs" />
     <Compile Include="Période.cs" />
     <Compile Include="secteur.cs">
@@ -136,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="ajouterBateau.resx">
       <DependentUpon>ajouterBateau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modifierBateau.resx">
+      <DependentUpon>modifierBateau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="secteur.resx">
       <DependentUpon>secteur.cs</DependentUpon>

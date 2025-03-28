@@ -38,11 +38,14 @@ namespace Projet_atlantik
                     maCnx.Open();
 
                 string query = "SELECT * FROM type";
+
                 int i = 1;
+
                 Label lblTarifsTypeCategorieText = new Label();
                 lblTarifsTypeCategorieText.Text = "Catégorie - Type";
                 lblTarifsTypeCategorieText.Location = new Point(5, i * 25);
                 gbxTarif.Controls.Add(lblTarifsTypeCategorieText);
+
                 Label lblTarifsTypeCategorieText2 = new Label();
                 lblTarifsTypeCategorieText2.Text = "Tarif";
                 lblTarifsTypeCategorieText2.Location = new Point(125, i * 25);

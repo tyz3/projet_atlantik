@@ -1,13 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using Projet_atlantik;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projet_atlantik
@@ -20,34 +14,85 @@ namespace Projet_atlantik
         {
             InitializeComponent();
             this.maCnx = connection;
-
         }
+
+        
 
         private void btnAjoutBateau_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(tbxAjoutBateau.Text))
+            if (string.IsNullOrWhiteSpace(tbxAjoutBateau.Text))
             {
-                try
+                MessageBox.Show("Veuillez entrer un nom pour le bateau.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbxPassager.Text) || string.IsNullOrWhiteSpace(tbxVehiculeB.Text) || string.IsNullOrWhiteSpace(tbxVehiculeC.Text))
+            {
+                MessageBox.Show("Veuillez renseigner toutes les capacités.");
+                return;
+            }
+
+            int idbateau = -1;
+            try
+            {
+                if (maCnx.State == ConnectionState.Closed)
+                    maCnx.Open();
+
+                string query = "INSERT INTO bateau (NOM) VALUES (@nom); SELECT LAST_INSERT_ID();";
+                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
                 {
-                    string query = "INSERT INTO bateau nom, lettrecategorie " +
-                        " VALUES (@nom, (SELECT nobateau FROM bateau WHERE nobateau = @nobateau));";
-                    using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
-                    {
-                        cmd.Parameters.AddWithValue("@nom", tbxAjoutBateau.Text);
-                        cmd.Parameters.AddWithValue("@passager", tbxPassager.Text);
-                        cmd.Parameters.AddWithValue("@vehiB", tbxVehiculeB.Text);
-                        cmd.Parameters.AddWithValue("@vehiC", tbxVehiculeC.Text);
-                        cmd.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Bateau ajouté avec succès !");
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
+                    cmd.Parameters.AddWithValue("@nom", tbxAjoutBateau.Text);
+                    idbateau = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de l'ajout du bateau : {ex.Message}");
+                return;
+            }
+
+            if (idbateau == -1)
+            {
+                MessageBox.Show("Erreur : L'ID du bateau n'a pas été récupéré.");
+                return;
+            }
+
+            try
+            {
+                string query = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) VALUES (@lettrecategorie, @nobateau, @capacitemax)";
+                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                {
+                    cmd.Parameters.AddWithValue("@nobateau", idbateau);
+
+                    cmd.Parameters.AddWithValue("@lettrecategorie", "A");
+                    cmd.Parameters.AddWithValue("@capacitemax", Convert.ToInt32(tbxPassager.Text));
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@nobateau", idbateau);
+                    cmd.Parameters.AddWithValue("@lettrecategorie", "B");
+                    cmd.Parameters.AddWithValue("@capacitemax", Convert.ToInt32(tbxVehiculeB.Text));
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@nobateau", idbateau);
+                    cmd.Parameters.AddWithValue("@lettrecategorie", "C");
+                    cmd.Parameters.AddWithValue("@capacitemax", Convert.ToInt32(tbxVehiculeC.Text));
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de l'ajout des capacités du bateau : {ex.Message}");
+                return;
+            }
+            finally
+            {
+                if (maCnx.State == ConnectionState.Open)
+                    maCnx.Close();
+            }
+
+            MessageBox.Show("Bateau ajouté avec succès !");
         }
     }
 }
-
-
