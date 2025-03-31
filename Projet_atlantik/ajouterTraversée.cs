@@ -139,7 +139,8 @@ namespace Projet_atlantik
                 bateauClass b = (bateauClass)cmbbxBateauAjouterTraversée.SelectedItem;
                 secteurClass secteur = (secteurClass)lstbxSecteursAjouterTraversée.SelectedItem;
 
-                string query = "INSERT INTO contenir (NOLIAISON, NOBATEAU, DATEHEUREDEPART, DATEHEUREARRIVEE) \r\nVALUES (@noliaison, @nobateau, @dateheuredepart, @dateheurearrivee)";
+                string query = "INSERT INTO traversee (NOLIAISON, NOBATEAU, DATEHEUREDEPART, DATEHEUREARRIVEE) " +
+                    "VALUES (@noliaison, @nobateau, @dateheuredepart, @dateheurearrivee)";
                 using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
                 {
                     cmd.Parameters.AddWithValue("@noliaison", l.GetNoLiaison());
