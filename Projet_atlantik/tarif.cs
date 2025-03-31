@@ -96,7 +96,8 @@ namespace Projet_atlantik
             {
                 while (reader.Read())
                 {
-                    lstbxTarif.Items.Add(reader["NOM"].ToString());
+                    secteurClass s = new secteurClass(reader.GetString("nom"), reader.GetInt32("noSecteur"));
+                    lstbxTarif.Items.Add(s);
                 }
             }
             maCnx.Close();
@@ -118,7 +119,7 @@ namespace Projet_atlantik
             {
                 while (reader.Read())
                 {
-                    LiaisonTarif l = new LiaisonTarif(reader.GetInt32("NOLIAISON"), reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM"));
+                    liaisonClass l = new liaisonClass(reader.GetInt32("NOLIAISON"), reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM"));
                     cmbbxTarifLiaison.Items.Add(l);
                 }
             }
@@ -183,7 +184,7 @@ namespace Projet_atlantik
                     while (reader.Read())
                     {
                         
-                        cmbbxTarifLiaison.Items.Add(new LiaisonTarif(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM")));
+                        cmbbxTarifLiaison.Items.Add(new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM")));
                     }
                 }
             }
@@ -203,7 +204,7 @@ namespace Projet_atlantik
             }
 
             Periode periode = (Periode)cmbbxTarifPeriode.SelectedItem;
-            LiaisonTarif liaison = (LiaisonTarif)cmbbxTarifLiaison.SelectedItem;
+            liaisonClass liaison = (liaisonClass)cmbbxTarifLiaison.SelectedItem;
 
             bool tarifSaisi = false;
             List<TextBox> textBoxes = new List<TextBox>();

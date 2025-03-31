@@ -43,7 +43,8 @@ namespace Projet_atlantik
             {
                 while (reader.Read())
                 {
-                    cmbbxBateauNom.Items.Add(reader["nom"].ToString());
+                    bateauClass b = new bateauClass(reader.GetString("nom"), reader.GetInt32("nobateau"));
+                    cmbbxBateauNom.Items.Add(b);
                 }
             }
             maCnx.Close();

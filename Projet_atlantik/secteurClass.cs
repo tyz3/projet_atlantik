@@ -2,12 +2,12 @@
 
 namespace Projet_atlantik
 {
-    internal class Secteur
+    internal class secteurClass
     {
         private int noSecteur;
         private string nom;
 
-        public Secteur(int noSecteur, string nom)
+        public secteurClass(string nom, int noSecteur)
         {
             this.noSecteur = noSecteur;
             this.nom = nom;

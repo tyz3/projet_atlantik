@@ -35,7 +35,8 @@ namespace Projet_atlantik
             {
                 while (reader.Read())
                 {
-                    lstbxSecteursLiaison.Items.Add(reader["NOM"].ToString());
+                    secteurClass s = new secteurClass(reader.GetString("nom"), reader.GetInt32("noSecteur"));
+                    lstbxSecteursLiaison.Items.Add(s);
                 }
             }
             maCnx.Close();

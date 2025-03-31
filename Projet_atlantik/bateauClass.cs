@@ -10,13 +10,13 @@ namespace Projet_atlantik
     {
         private string nom;
         private int noBateau;
-        private string libelle;
 
-        public bateauClass(string nom,int noBateau, string libelle)
+
+        public bateauClass(string nom,int noBateau)
         {
             this.nom = nom;
             this.noBateau = noBateau;
-            this.libelle = libelle;
+
 
         }
 
@@ -32,15 +32,12 @@ namespace Projet_atlantik
         }
 
 
-        public string GetLibelle()
-        {
-            return libelle;
-        }
+        
 
 
         public override string ToString()
         {
-            return nom + "ajouté !";
+            return nom;
         }
     
     }
