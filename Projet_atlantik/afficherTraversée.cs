@@ -25,6 +25,8 @@ namespace Projet_atlantik
         {
             RemplirLiaison();
             RemplirSecteurs();
+         
+    
 
         }
 
@@ -117,10 +119,57 @@ namespace Projet_atlantik
             maCnx.Close();
         }
 
+
+        
+        public void RemplirTraversée()
+        {
+            lvAfficherTraversée.Items.Clear();
+
+            lvAfficherTraversée.View = View.Details;
+            lvAfficherTraversée.GridLines = true;
+            lvAfficherTraversée.FullRowSelect = true;
+
+            lvAfficherTraversée.Columns.Add("N°", 50);
+            lvAfficherTraversée.Columns.Add("Heure", 70);
+            lvAfficherTraversée.Columns.Add("Bateau", 90);
+            lvAfficherTraversée.Columns.Add("A\nPassager", 80);
+            lvAfficherTraversée.Columns.Add("B\nVéh.inf.2m", 80);
+            lvAfficherTraversée.Columns.Add("C\nVéh.sup.2m", 80);
+
+
+        }
+
+
         private void btnAfficherTraversées_Click(object sender, EventArgs e)
         {
+            if (maCnx.State != ConnectionState.Open)
+                maCnx.Open();
+
+            try
+            {
+                string query = "SELECT traversee.NOTRAVERSEE, traversee.DATEHEUREDEPART, traversee.NOBATEAU, bateau.NOM, contenir.CAPACITEMAX, contenir.LETTRECATEGORIE, enregistrer.QUANTITERESERVEE, (contenir.CAPACITEMAX - enregistrer.QUANTITERESERVEE) AS PLACES_DISPOS" +
+                    "FROM traversee" +
+                    "JOIN bateau ON traversee.NOBATEAU = bateau.NOBATEAU" +
+                    "JOIN enregistrer ON contenir.LETTRECATEGORIE = enregistrer.LETTRECATEGORIE" +
+                    "JOIN reservation ON traversee.NOTRAVERSEE = reservation.NOTRAVERSEE" +
+                    "JOIN client ON reservation.NOCLIENT = client.NOCLIENT";
+
+                ;
+                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                {
+                
+                
+                }
+
+                RemplirTraversée();
+            }
 
 
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la modification du bateau : {ex.Message}");
+                return;
+            }
 
         }
 

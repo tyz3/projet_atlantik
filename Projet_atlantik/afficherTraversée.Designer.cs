@@ -44,7 +44,7 @@
             this.lvAfficherTraversée.HideSelection = false;
             this.lvAfficherTraversée.Location = new System.Drawing.Point(309, 113);
             this.lvAfficherTraversée.Name = "lvAfficherTraversée";
-            this.lvAfficherTraversée.Size = new System.Drawing.Size(422, 300);
+            this.lvAfficherTraversée.Size = new System.Drawing.Size(468, 300);
             this.lvAfficherTraversée.TabIndex = 0;
             this.lvAfficherTraversée.UseCompatibleStateImageBehavior = false;
             // 
@@ -69,7 +69,7 @@
             // 
             // btnAfficherTraversées
             // 
-            this.btnAfficherTraversées.Location = new System.Drawing.Point(361, 79);
+            this.btnAfficherTraversées.Location = new System.Drawing.Point(395, 79);
             this.btnAfficherTraversées.Name = "btnAfficherTraversées";
             this.btnAfficherTraversées.Size = new System.Drawing.Size(305, 28);
             this.btnAfficherTraversées.TabIndex = 3;
@@ -81,7 +81,7 @@
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(553, 32);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(224, 20);
             this.dateTimePicker1.TabIndex = 4;
             // 
             // lblSecteursAfficherTraversée
