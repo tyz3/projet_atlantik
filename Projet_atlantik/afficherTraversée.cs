@@ -132,9 +132,9 @@ namespace Projet_atlantik
             lvAfficherTraversée.Columns.Add("N°", 50);
             lvAfficherTraversée.Columns.Add("Heure", 70);
             lvAfficherTraversée.Columns.Add("Bateau", 90);
-            lvAfficherTraversée.Columns.Add("A\nPassager", 80);
-            lvAfficherTraversée.Columns.Add("B\nVéh.inf.2m", 80);
-            lvAfficherTraversée.Columns.Add("C\nVéh.sup.2m", 80);
+            lvAfficherTraversée.Columns.Add("A Passager", 80);
+            lvAfficherTraversée.Columns.Add("B - Véh.inf.2m", 80);
+            lvAfficherTraversée.Columns.Add("C - Véh.sup.2m", 80);
 
 
         }
