@@ -98,6 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="afficherTraversée.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="afficherTraversée.Designer.cs">
+      <DependentUpon>afficherTraversée.cs</DependentUpon>
+    </Compile>
     <Compile Include="ajouterBateau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <Compile Include="tarif.Designer.cs">
       <DependentUpon>tarif.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="afficherTraversée.resx">
+      <DependentUpon>afficherTraversée.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ajouterBateau.resx">
       <DependentUpon>ajouterBateau.cs</DependentUpon>
     </EmbeddedResource>

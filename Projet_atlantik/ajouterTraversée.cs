@@ -81,19 +81,24 @@ namespace Projet_atlantik
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOLIAISON, NOPORT_DEPART, NOPORT_ARRIVEE, NOM " +
-                           "FROM port p " +
-                           "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART";
+
+            string query = "SELECT l.NOLIAISON, l.NOPORT_DEPART, l.NOPORT_ARRIVEE, " +
+                           "p1.NOM AS NomDepart, p2.NOM AS NomArrivee " +
+                           "FROM liaison l " +
+                           "INNER JOIN port p1 ON l.NOPORT_DEPART = p1.NOPORT " +
+                           "INNER JOIN port p2 ON l.NOPORT_ARRIVEE = p2.NOPORT";
 
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    liaisonClass l = new liaisonClass(reader.GetInt32("NOLIAISON"), reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NOM"));
+
+                    liaisonClass l = new liaisonClass(reader.GetInt32("NOLIAISON"), reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetString("NomDepart") + " -> " + reader.GetString("NomArrivee"));
                     cmbbxLiaisonAjouterTraversée.Items.Add(l);
                 }
             }
+
             maCnx.Close();
         }
 

@@ -93,3 +93,4 @@ C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_at
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.ajouterBateau.resources
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.modifierBateau.resources
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.ajouterTraversée.resources
+C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.afficherTraversée.resources

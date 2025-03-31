@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace Projet_atlantik
 {
@@ -16,30 +17,56 @@ namespace Projet_atlantik
             this.noPortArrivee = noPortArrivee;
             this.nom = nom;
         }
-        public int GetNoLiaison()
+
+        private static string connectionString = "server=localhost;database=projet_atlantik;user=root;password=;";
+
+        public int GetNoLiaison() => noLiaison;
+
+        private string GetNomPort(int noPort)
         {
-            return noLiaison;
+            string portName = "";
+            string query = "SELECT NOM FROM port WHERE NOPORT = @noport";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@noport", noPort);
+
+                try
+                {
+                    connection.Open();
+                    object nomliaison = command.ExecuteScalar();
+                    if (nomliaison != null)
+                    {
+                        portName = nomliaison.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erreur lors de la récupération du nom du port : {ex.Message}");
+                }
+            }
+
+            return portName;
         }
 
         public int GetNoPortDepart()
         {
             return noPortDepart;
         }
-
         public int GetNoPortArrivee()
         {
-            return noPortArrivee;
+
+           return noPortArrivee;
         }
         public string GetNom()
         {
-            return nom;
+          return  nom;
         }
+
         public override string ToString()
         {
-            return $"{noPortDepart} -> {noPortArrivee}";
+            return $"{GetNomPort(noPortDepart)} -> {GetNomPort(noPortArrivee)}";
         }
     }
-
-    
-    
 }
