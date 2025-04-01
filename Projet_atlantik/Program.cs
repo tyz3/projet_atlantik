@@ -31,8 +31,8 @@ namespace Projet_atlantik
                 MessageBox.Show("Erreur de connexion à la base de données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            /// Application.Run(new ProjetAtlantik.Secteur(maCnx));
-             Application.Run(new afficherTraversée(maCnx));
+
+             Application.Run(new ajouterTraversée(maCnx));
         }
     }
 }

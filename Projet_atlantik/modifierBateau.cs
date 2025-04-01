@@ -38,7 +38,7 @@ namespace Projet_atlantik
                 maCnx.Open();
 
             string query = "SELECT nom FROM bateau";
-            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            MySqlCommand cmd = new MySqlCommand(query, maCnx);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

@@ -32,7 +32,7 @@
             this.lstbxSecteursAfficherTraversée = new System.Windows.Forms.ListBox();
             this.cmbbxLiaisonAfficherTraversée = new System.Windows.Forms.ComboBox();
             this.btnAfficherTraversées = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpAfficherTraversée = new System.Windows.Forms.DateTimePicker();
             this.lblSecteursAfficherTraversée = new System.Windows.Forms.Label();
             this.lblLiaisonAfficherTraversée = new System.Windows.Forms.Label();
             this.lblDateAfficherTraversée = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.cmbbxLiaisonAfficherTraversée.FormattingEnabled = true;
             this.cmbbxLiaisonAfficherTraversée.Location = new System.Drawing.Point(31, 357);
             this.cmbbxLiaisonAfficherTraversée.Name = "cmbbxLiaisonAfficherTraversée";
-            this.cmbbxLiaisonAfficherTraversée.Size = new System.Drawing.Size(121, 21);
+            this.cmbbxLiaisonAfficherTraversée.Size = new System.Drawing.Size(156, 21);
             this.cmbbxLiaisonAfficherTraversée.TabIndex = 2;
             // 
             // btnAfficherTraversées
@@ -77,12 +77,12 @@
             this.btnAfficherTraversées.UseVisualStyleBackColor = true;
             this.btnAfficherTraversées.Click += new System.EventHandler(this.btnAfficherTraversées_Click);
             // 
-            // dateTimePicker1
+            // dtpAfficherTraversée
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(553, 32);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(224, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dtpAfficherTraversée.Location = new System.Drawing.Point(553, 32);
+            this.dtpAfficherTraversée.Name = "dtpAfficherTraversée";
+            this.dtpAfficherTraversée.Size = new System.Drawing.Size(224, 20);
+            this.dtpAfficherTraversée.TabIndex = 4;
             // 
             // lblSecteursAfficherTraversée
             // 
@@ -119,7 +119,7 @@
             this.Controls.Add(this.lblDateAfficherTraversée);
             this.Controls.Add(this.lblLiaisonAfficherTraversée);
             this.Controls.Add(this.lblSecteursAfficherTraversée);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpAfficherTraversée);
             this.Controls.Add(this.btnAfficherTraversées);
             this.Controls.Add(this.cmbbxLiaisonAfficherTraversée);
             this.Controls.Add(this.lstbxSecteursAfficherTraversée);
@@ -138,7 +138,7 @@
         private System.Windows.Forms.ListBox lstbxSecteursAfficherTraversée;
         private System.Windows.Forms.ComboBox cmbbxLiaisonAfficherTraversée;
         private System.Windows.Forms.Button btnAfficherTraversées;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpAfficherTraversée;
         private System.Windows.Forms.Label lblSecteursAfficherTraversée;
         private System.Windows.Forms.Label lblLiaisonAfficherTraversée;
         private System.Windows.Forms.Label lblDateAfficherTraversée;

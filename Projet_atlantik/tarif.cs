@@ -27,6 +27,8 @@ namespace Projet_atlantik
             RemplirSecteurs();
             RemplirLiaison();
             RemplirPeriode();
+
+
             if (maCnx.State == ConnectionState.Closed)
             {
                 maCnx.Open();
@@ -90,7 +92,7 @@ namespace Projet_atlantik
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOM FROM secteur";
+            string query = "SELECT NOM, nosecteur FROM secteur";
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
@@ -164,7 +166,7 @@ namespace Projet_atlantik
             ChargerLiaisonsPourSecteur(lstbxTarif.SelectedItem.ToString());
         }
 
-        private void ChargerLiaisonsPourSecteur(string secteurNom)
+        private void ChargerLiaisonsPourSecteur(string noSecteur)
         {
             cmbbxTarifLiaison.Items.Clear();
 
@@ -174,17 +176,18 @@ namespace Projet_atlantik
             string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOLIAISON, NOM " +
                            "FROM port p " +
                            "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART " +
-                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOM = @secteurNom)";
+                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOSECTEUR = @noSecteur)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             {
-                cmd.Parameters.AddWithValue("@secteurNom", secteurNom);
+                cmd.Parameters.AddWithValue("@noSecteur", noSecteur);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        
-                        cmbbxTarifLiaison.Items.Add(new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM")));
+
+                        liaisonClass l = new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM"));
+                        cmbbxTarifLiaison.Items.Add(l);
                     }
                 }
             }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace Projet_atlantik
 {
@@ -56,10 +57,10 @@ namespace Projet_atlantik
 
 
 
-       
 
 
-        private void ChargerLiaisonsPourSecteur(string secteurNom)
+
+        private void ChargerLiaisonsPourSecteur(string noSecteur)
         {
             cmbbxLiaisonAfficherTraversée.Items.Clear();
 
@@ -69,19 +70,22 @@ namespace Projet_atlantik
             string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOLIAISON, NOM " +
                            "FROM port p " +
                            "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART " +
-                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOM = @secteurNom)";
+                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOSECTEUR = @noSecteur)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             {
-                cmd.Parameters.AddWithValue("@secteurNom", secteurNom);
+                cmd.Parameters.AddWithValue("@noSecteur", noSecteur);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        cmbbxLiaisonAfficherTraversée.Items.Add(new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM")));
+
+                        liaisonClass l = new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM"));
+                        cmbbxLiaisonAfficherTraversée.Items.Add(l);
                     }
                 }
             }
+
             maCnx.Close();
         }
 
@@ -120,23 +124,100 @@ namespace Projet_atlantik
         }
 
 
-        
+
+        private void ChargerLiaisonParSecteurs(string noSecteur)
+        {
+            cmbbxLiaisonAfficherTraversée.Items.Clear();
+
+            if (maCnx.State != ConnectionState.Open)
+                maCnx.Open();
+
+            string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOLIAISON, NOM " +
+                           "FROM port p " +
+                           "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART " +
+                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE nosecteur = @noSecteur)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            {
+                cmd.Parameters.AddWithValue("@noSecteur", noSecteur);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        liaisonClass l = new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM"));
+                        cmbbxLiaisonAfficherTraversée.Items.Add(l);
+                    }
+                }
+            }
+            maCnx.Close();
+        }
+
+
         public void RemplirTraversée()
         {
             lvAfficherTraversée.Items.Clear();
+
+            if (lstbxSecteursAfficherTraversée.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un secteur.");
+                return;
+            }
+
+            if (cmbbxLiaisonAfficherTraversée.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une liaison.");
+                return;
+            }
+
+            secteurClass secteurSelectionne = (secteurClass)lstbxSecteursAfficherTraversée.SelectedItem;
+            liaisonClass liaisonSelectionnee = (liaisonClass)cmbbxLiaisonAfficherTraversée.SelectedItem;
+            DateTime dateSelectionnee = dtpAfficherTraversée.Value;
 
             lvAfficherTraversée.View = View.Details;
             lvAfficherTraversée.GridLines = true;
             lvAfficherTraversée.FullRowSelect = true;
 
-            lvAfficherTraversée.Columns.Add("N°", 50);
-            lvAfficherTraversée.Columns.Add("Heure", 70);
-            lvAfficherTraversée.Columns.Add("Bateau", 90);
-            lvAfficherTraversée.Columns.Add("A Passager", 80);
-            lvAfficherTraversée.Columns.Add("B - Véh.inf.2m", 80);
-            lvAfficherTraversée.Columns.Add("C - Véh.sup.2m", 80);
+            if (lvAfficherTraversée.Columns.Count == 0)
+            {
+                lvAfficherTraversée.Columns.Add("N°", 50);
+                lvAfficherTraversée.Columns.Add("Heure", 70);
+                lvAfficherTraversée.Columns.Add("Bateau", 90);
+                lvAfficherTraversée.Columns.Add("A Passager", 80);
+                lvAfficherTraversée.Columns.Add("B - Véh.inf.2m", 80);
+                lvAfficherTraversée.Columns.Add("C - Véh.sup.2m", 80);
+            }
 
+            string query = "SELECT traversee.NOTRAVERSEE, traversee.DATEHEUREDEPART, traversee.NOBATEAU, bateau.NOM, contenir.CAPACITEMAX, contenir.LETTRECATEGORIE, enregistrer.QUANTITERESERVEE, (contenir.CAPACITEMAX - enregistrer.QUANTITERESERVEE) AS PLACES_DISPOS" +
+                     "FROM traversee" +
+                     "JOIN bateau ON traversee.NOBATEAU = bateau.NOBATEAU" +
+                     "JOIN enregistrer ON contenir.LETTRECATEGORIE = enregistrer.LETTRECATEGORIE" +
+                     "JOIN reservation ON traversee.NOTRAVERSEE = reservation.NOTRAVERSEE" +
+                     "JOIN client ON reservation.NOCLIENT = client.NOCLIENT";
 
+            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            {
+                cmd.Parameters.AddWithValue("@nosecteur", secteurSelectionne.GetNoSecteur());
+                cmd.Parameters.AddWithValue("@noliaison", liaisonSelectionnee.GetNoLiaison());
+                cmd.Parameters.AddWithValue("@dateSelectionnee", dateSelectionnee.ToString("yyyy-MM-dd"));
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string[] tabItem = {
+                    reader["NOTRAVERSEE"].ToString(),
+                    reader["DATEHEUREDEPART"].ToString(),
+                    reader["NOM_BATEAU"].ToString(),
+                    reader["QUANTITERESERVEE"].ToString(),
+                    reader["CAPACITEMAX"].ToString(),
+                    reader["PLACES_DISPOS"].ToString()
+                };
+
+                        ListViewItem lv = new ListViewItem(tabItem);
+                        lvAfficherTraversée.Items.Add(lv);
+                    }
+                }
+            }
         }
 
 
@@ -147,19 +228,6 @@ namespace Projet_atlantik
 
             try
             {
-                string query = "SELECT traversee.NOTRAVERSEE, traversee.DATEHEUREDEPART, traversee.NOBATEAU, bateau.NOM, contenir.CAPACITEMAX, contenir.LETTRECATEGORIE, enregistrer.QUANTITERESERVEE, (contenir.CAPACITEMAX - enregistrer.QUANTITERESERVEE) AS PLACES_DISPOS" +
-                    "FROM traversee" +
-                    "JOIN bateau ON traversee.NOBATEAU = bateau.NOBATEAU" +
-                    "JOIN enregistrer ON contenir.LETTRECATEGORIE = enregistrer.LETTRECATEGORIE" +
-                    "JOIN reservation ON traversee.NOTRAVERSEE = reservation.NOTRAVERSEE" +
-                    "JOIN client ON reservation.NOCLIENT = client.NOCLIENT";
-
-                ;
-                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
-                {
-                
-                
-                }
 
                 RemplirTraversée();
             }
@@ -167,7 +235,7 @@ namespace Projet_atlantik
 
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors de la modification du bateau : {ex.Message}");
+                MessageBox.Show($"Erreur lors de l'ajout des capacités du bateau : {ex.Message}");
                 return;
             }
 

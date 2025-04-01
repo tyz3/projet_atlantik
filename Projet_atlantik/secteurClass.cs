@@ -25,7 +25,7 @@ namespace Projet_atlantik
 
         public override string ToString()
         {
-            return nom;
+            return noSecteur + "- " + nom;
         }
     }
 }

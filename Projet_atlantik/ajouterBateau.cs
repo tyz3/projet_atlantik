@@ -39,7 +39,7 @@ namespace Projet_atlantik
                     maCnx.Open();
 
                 string query = "INSERT INTO bateau (NOM) VALUES (@nom); SELECT LAST_INSERT_ID();";
-                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                MySqlCommand cmd = new MySqlCommand(query, maCnx);
                 {
                     cmd.Parameters.AddWithValue("@nom", tbxAjoutBateau.Text);
                     idbateau = Convert.ToInt32(cmd.ExecuteScalar());
@@ -60,7 +60,7 @@ namespace Projet_atlantik
             try
             {
                 string query = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) VALUES (@lettrecategorie, @nobateau, @capacitemax)";
-                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                MySqlCommand cmd = new MySqlCommand(query, maCnx);
                 {
                     cmd.Parameters.AddWithValue("@nobateau", idbateau);
 

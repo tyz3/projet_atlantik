@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System;
 
 namespace ProjetAtlantik
 {
@@ -21,8 +14,6 @@ namespace ProjetAtlantik
             this.maCnx = connection;
         }
 
-        
-
         private void btnSecteur_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(tbxSecteur.Text))
@@ -30,11 +21,10 @@ namespace ProjetAtlantik
                 try
                 {
                     string query = "INSERT INTO secteur (NOM) VALUES (@nom);";
-                    using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
-                    {
-                        cmd.Parameters.AddWithValue("@nom", tbxSecteur.Text);
-                        cmd.ExecuteNonQuery();
-                    }
+                    MySqlCommand cmd = new MySqlCommand(query, maCnx);
+                    cmd.Parameters.AddWithValue("@nom", tbxSecteur.Text);
+                    cmd.ExecuteNonQuery();
+
                     MessageBox.Show(tbxSecteur.Text + " ajouté avec succès.", "Succès");
                 }
                 catch (MySqlException ex)
@@ -42,9 +32,6 @@ namespace ProjetAtlantik
                     MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
                 }
             }
-            
         }
     }
-
-    
 }

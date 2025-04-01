@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Dynamic;
 using System.Windows.Forms;
 
 namespace Projet_atlantik
@@ -61,7 +62,7 @@ namespace Projet_atlantik
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT NOM, NOSECTEUR FROM secteur";
+            string query = "SELECT NOM, nosecteur FROM secteur";
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
@@ -102,7 +103,7 @@ namespace Projet_atlantik
             maCnx.Close();
         }
 
-        private void ChargerLiaisonsPourSecteur(string secteurNom)
+        private void ChargerLiaisonsPourSecteur(string noSecteur)
         {
             cmbbxLiaisonAjouterTraversée.Items.Clear();
 
@@ -112,16 +113,17 @@ namespace Projet_atlantik
             string query = "SELECT NOPORT_DEPART, NOPORT_ARRIVEE, NOLIAISON, NOM " +
                            "FROM port p " +
                            "INNER JOIN liaison l ON p.NOPORT = l.NOPORT_DEPART " +
-                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOM = @secteurNom)";
+                           "WHERE l.NOSECTEUR = (SELECT NOSECTEUR FROM secteur WHERE NOSECTEUR = @noSecteur)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
             {
-                cmd.Parameters.AddWithValue("@secteurNom", secteurNom);
+                cmd.Parameters.AddWithValue("@noSecteur", noSecteur);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        cmbbxLiaisonAjouterTraversée.Items.Add(new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM")));
+                        liaisonClass l = new liaisonClass(reader.GetInt32("NOPORT_DEPART"), reader.GetInt32("NOPORT_ARRIVEE"), reader.GetInt32("NOLIAISON"), reader.GetString("NOM"));
+                        cmbbxLiaisonAjouterTraversée.Items.Add(l);
                     }
                 }
             }

@@ -20,11 +20,15 @@ namespace Projet_atlantik
 
         private static string connectionString = "server=localhost;database=projet_atlantik;user=root;password=;";
 
-        public int GetNoLiaison() => noLiaison;
+        public int GetNoLiaison()
+        {
+            return noLiaison;
+        }
+
 
         private string GetNomPort(int noPort)
         {
-            string portName = "";
+            string portNom = "";
             string query = "SELECT NOM FROM port WHERE NOPORT = @noport";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -38,7 +42,7 @@ namespace Projet_atlantik
                     object nomliaison = command.ExecuteScalar();
                     if (nomliaison != null)
                     {
-                        portName = nomliaison.ToString();
+                        portNom = nomliaison.ToString();
                     }
                 }
                 catch (Exception ex)
@@ -47,7 +51,7 @@ namespace Projet_atlantik
                 }
             }
 
-            return portName;
+            return portNom;
         }
 
         public int GetNoPortDepart()
