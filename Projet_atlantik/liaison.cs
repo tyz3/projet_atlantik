@@ -91,12 +91,17 @@ namespace Projet_atlantik
                 cmd.Parameters.AddWithValue("@numPortArrivee", cmbbxArriveeLiaison.Text);
                 cmd.Parameters.AddWithValue("@Distance", tbxDistanceLiaison.Text);
                 cmd.ExecuteNonQuery();
+
+
+                
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
             }
-            maCnx.Clone();
+            MessageBox.Show("Liaison ajouté avec succès.");
+            maCnx.Close();
         }
+   
     }
 }

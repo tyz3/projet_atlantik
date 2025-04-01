@@ -259,6 +259,8 @@ namespace Projet_atlantik
                         cmd.Parameters.AddWithValue("@noliaison", liaison.GetNoLiaison());
                         cmd.Parameters.AddWithValue("@tarif", tarif);
                         cmd.ExecuteNonQuery();
+
+                        
                     }
                     catch (MySqlException ex)
                     {
@@ -268,6 +270,7 @@ namespace Projet_atlantik
                     {
                         maCnx.Close();
                     }
+                    MessageBox.Show("Tarifs ajouté avec succès.");
                 }
             }
         }
