@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ProjetAtlantik;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,40 +15,75 @@ namespace Projet_atlantik
     public partial class menu : Form
     {
 
-
-        public menu()
-        {
-            InitializeComponent();
-
- 
-            MenuStrip menu = new MenuStrip();
-
-
-            ToolStripMenuItem ajouter = new ToolStripMenuItem("Ajouter");
-            ToolStripMenuItem modifier = new ToolStripMenuItem("Modifier");
-            ToolStripMenuItem afficher = new ToolStripMenuItem("Afficher");
-            ToolStripMenuItem apropos = new ToolStripMenuItem("A Propos");
-
      
 
-            menu.Items.Add(ajouter);
-            menu.Items.Add(modifier);
-            menu.Items.Add(afficher);
-            menu.Items.Add(apropos);
-
-            this.MainMenuStrip = menu;
-            this.Controls.Add(menu);
-
-            
-        }
-        private void ImageExampleForm_Paint(object sender, PaintEventArgs e)
+        private MySqlConnection maCnx;
+        public menu(MySqlConnection connection)
         {
-            Image newImage = Image.FromFile("image_menu.jpg");
+            InitializeComponent();
+            this.maCnx = connection;
 
-            Point ulCorner = new Point(100, 100);
-
-            e.Graphics.DrawImage(newImage, ulCorner);
         }
 
+
+        private void unSecteurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Secteur secteurForm = new Secteur(maCnx);
+            secteurForm.Show();
+        }
+
+        private void menuAjouterPort_Click(object sender, EventArgs e)
+        {
+            port portForm = new port(maCnx);
+            portForm.Show();
+        }
+
+        private void menuAjouterLiaison_Click(object sender, EventArgs e)
+        {
+            liaison liaisonForm = new liaison(maCnx);
+            liaisonForm.Show();
+        }
+
+        private void menuAjouterTarif_Click(object sender, EventArgs e)
+        {
+            tarif tarifForm = new tarif(maCnx);
+            tarifForm.Show();
+        }
+
+        private void menuAjouterBateau_Click(object sender, EventArgs e)
+        {
+            ajouterBateau ajouterBateauForm = new ajouterBateau(maCnx);
+            ajouterBateauForm.Show();
+        }
+
+        private void menuAjouterTraversée_Click(object sender, EventArgs e)
+        {
+            ajouterTraversée ajouterTraverséeForm = new ajouterTraversée(maCnx);
+            ajouterTraverséeForm.Show();
+
+        }
+
+        private void menuModifierBateau_Click(object sender, EventArgs e)
+        {
+            modifierBateau modifierBateauForm = new modifierBateau(maCnx);
+            modifierBateauForm.Show();
+        }
+
+        private void menuModifierParametre_Click(object sender, EventArgs e)
+        {
+            modifierParametre modifierParametreForm = new modifierParametre(maCnx);
+            modifierParametreForm.Show();
+        }
+
+        private void menuAfficherTraversée_Click(object sender, EventArgs e)
+        {
+            afficherTraversée afficherTraverséeForm = new afficherTraversée(maCnx);
+            afficherTraverséeForm.Show();
+        }
+
+        private void menuAfficherRéservation_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

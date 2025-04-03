@@ -27,14 +27,15 @@ namespace Projet_atlantik
                 maCnx.Open();
 
             string query = "SELECT NOM, nosecteur FROM secteur";
-            MySqlCommand cmd = new MySqlCommand(query, maCnx);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            using (MySqlDataReader reader = cmd.ExecuteReader())
             {
-                secteurClass s = new secteurClass(reader.GetString("nom"), reader.GetInt32("noSecteur"));
-                lstbxSecteursLiaison.Items.Add(s);
+                while (reader.Read())
+                {
+                    secteurClass s = new secteurClass(reader.GetString("nom"), reader.GetInt32("noSecteur"));
+                    lstbxSecteursLiaison.Items.Add(s);
+                }
             }
-            reader.Close();
             maCnx.Close();
         }
 
@@ -87,7 +88,7 @@ namespace Projet_atlantik
 
                 MySqlCommand cmd = new MySqlCommand(query, maCnx);
                 cmd.Parameters.AddWithValue("@numPortDepart", cmbbxDepartLiaison.Text);
-                cmd.Parameters.AddWithValue("@numSecteur", lstbxSecteursLiaison.Text);
+                cmd.Parameters.AddWithValue("@numSecteur", ((secteurClass)lstbxSecteursLiaison.SelectedItem).GetNoSecteur()); 
                 cmd.Parameters.AddWithValue("@numPortArrivee", cmbbxArriveeLiaison.Text);
                 cmd.Parameters.AddWithValue("@Distance", tbxDistanceLiaison.Text);
                 cmd.ExecuteNonQuery();

@@ -32,7 +32,7 @@ namespace Projet_atlantik
                 return;
             }
 
-             Application.Run(new ajouterTraversée(maCnx));
+             Application.Run(new menu(maCnx));
         }
     }
 }

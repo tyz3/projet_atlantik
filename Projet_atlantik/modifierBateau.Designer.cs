@@ -63,6 +63,7 @@
             this.tbxVehiculeCModif.Name = "tbxVehiculeCModif";
             this.tbxVehiculeCModif.Size = new System.Drawing.Size(100, 20);
             this.tbxVehiculeCModif.TabIndex = 5;
+            this.tbxVehiculeCModif.Tag = "C";
             // 
             // tbxVehiculeBModif
             // 
@@ -70,6 +71,7 @@
             this.tbxVehiculeBModif.Name = "tbxVehiculeBModif";
             this.tbxVehiculeBModif.Size = new System.Drawing.Size(100, 20);
             this.tbxVehiculeBModif.TabIndex = 4;
+            this.tbxVehiculeBModif.Tag = "B";
             // 
             // tbxPassagerModif
             // 
@@ -77,6 +79,7 @@
             this.tbxPassagerModif.Name = "tbxPassagerModif";
             this.tbxPassagerModif.Size = new System.Drawing.Size(100, 20);
             this.tbxPassagerModif.TabIndex = 3;
+            this.tbxPassagerModif.Tag = "A";
             // 
             // lblVehiculeC
             // 
@@ -132,6 +135,7 @@
             this.cmbbxBateauNom.Name = "cmbbxBateauNom";
             this.cmbbxBateauNom.Size = new System.Drawing.Size(121, 21);
             this.cmbbxBateauNom.TabIndex = 8;
+            this.cmbbxBateauNom.SelectedIndexChanged += new System.EventHandler(this.cmbbxBateauNom_SelectedIndexChanged_1);
             // 
             // modifierBateau
             // 

@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projet_atlantik
@@ -19,7 +13,6 @@ namespace Projet_atlantik
         {
             InitializeComponent();
             this.maCnx = connection;
-
         }
 
         private void modifierBateau_Load(object sender, EventArgs e)
@@ -27,17 +20,14 @@ namespace Projet_atlantik
             RemplirNomBateau();
         }
 
-
-
         public void RemplirNomBateau()
         {
-
             cmbbxBateauNom.Items.Clear();
 
             if (maCnx.State != ConnectionState.Open)
                 maCnx.Open();
 
-            string query = "SELECT nom FROM bateau";
+            string query = "SELECT nom, nobateau FROM bateau";
             MySqlCommand cmd = new MySqlCommand(query, maCnx);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
@@ -50,12 +40,54 @@ namespace Projet_atlantik
             maCnx.Close();
         }
 
+        private void cmbbxBateauNom_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmbbxBateauNom.SelectedItem is bateauClass selectedBateau)
+            {
+                ChargerDonneesBateau(selectedBateau.GetNoBateau());
+            }
+        }
+
+        private void ChargerDonneesBateau(int idbateau)
+        {
+            if (maCnx.State != ConnectionState.Open)
+                maCnx.Open();
+            string query = "SELECT CAPACITEMAX, LETTRECATEGORIE FROM contenir WHERE NOBATEAU = @nobateau";
+            using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+            {
+                cmd.Parameters.AddWithValue("@nobateau", idbateau);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                
+
+                    while (reader.Read())
+                    {
+                        string categorie = reader.GetString("LETTRECATEGORIE");
+                        int capaciteMax = reader.GetInt32("CAPACITEMAX");
+
+                        foreach (Control ctrl in gbxModifierBateau.Controls)
+                        {
+                            if (ctrl is TextBox tbx)
+                            {
+                                if (tbx.Tag.ToString() == categorie)
+                                {
+                                    tbx.Text = capaciteMax.ToString();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            maCnx.Close();
+        }
+
+
 
 
 
         private void btnModifBateau_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cmbbxBateauNom.Text))
+            if (!(cmbbxBateauNom.SelectedItem is bateauClass selectedBateau))
             {
                 MessageBox.Show("Veuillez sélectionner un bateau.");
                 return;
@@ -69,41 +101,15 @@ namespace Projet_atlantik
                 return;
             }
 
-            int idbateau = -1;
-
             try
             {
                 if (maCnx.State == ConnectionState.Closed)
                     maCnx.Open();
 
-                string querySelect = "SELECT nobateau FROM bateau WHERE nom = @nom;";
-                using (MySqlCommand cmd = new MySqlCommand(querySelect, maCnx))
-                {
-                    cmd.Parameters.AddWithValue("@nom", cmbbxBateauNom.Text);
-                    object result = cmd.ExecuteScalar();
-                    if (result != null)
-                    {
-                        idbateau = Convert.ToInt32(result);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bateau introuvable.");
-                        return;
-                    }
-                }
-
-                string queryUpdateBateau = "UPDATE bateau SET nom = @nom WHERE nobateau = @nobateau;";
-                using (MySqlCommand cmd = new MySqlCommand(queryUpdateBateau, maCnx))
-                {
-                    cmd.Parameters.AddWithValue("@nom", cmbbxBateauNom.Text);
-                    cmd.Parameters.AddWithValue("@nobateau", idbateau);
-                    cmd.ExecuteNonQuery();
-                }
-
                 string queryUpdateContenir = "UPDATE contenir SET CAPACITEMAX = @capacitemax WHERE NOBATEAU = @nobateau AND LETTRECATEGORIE = @lettrecategorie;";
                 using (MySqlCommand cmd = new MySqlCommand(queryUpdateContenir, maCnx))
                 {
-                    cmd.Parameters.AddWithValue("@nobateau", idbateau);
+                    cmd.Parameters.AddWithValue("@nobateau", selectedBateau.GetNoBateau());
 
                     cmd.Parameters.AddWithValue("@lettrecategorie", "A");
                     cmd.Parameters.AddWithValue("@capacitemax", Convert.ToInt32(tbxPassagerModif.Text));
@@ -131,9 +137,5 @@ namespace Projet_atlantik
 
             MessageBox.Show("Bateau modifié avec succès !");
         }
-
     }
 }
-
-
-

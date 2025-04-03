@@ -8,8 +8,8 @@ namespace Projet_atlantik
 {
     internal class portClass
     {
-        public string nom;
-        public int noPort;
+        private string nom;
+        private int noPort;
 
         public portClass(string nom, int noPort)
         {
