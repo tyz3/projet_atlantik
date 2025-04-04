@@ -58,7 +58,7 @@ namespace Projet_atlantik
                 cmd.Parameters.AddWithValue("@nobateau", idbateau);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                
+
 
                     while (reader.Read())
                     {
@@ -89,7 +89,7 @@ namespace Projet_atlantik
         {
             if (!(cmbbxBateauNom.SelectedItem is bateauClass selectedBateau))
             {
-                MessageBox.Show("Veuillez sélectionner un bateau.");
+                MessageBox.Show("Veuillez sélectionner un bateau.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -97,7 +97,25 @@ namespace Projet_atlantik
                 string.IsNullOrWhiteSpace(tbxVehiculeBModif.Text) ||
                 string.IsNullOrWhiteSpace(tbxVehiculeCModif.Text))
             {
-                MessageBox.Show("Veuillez renseigner toutes les capacités.");
+                MessageBox.Show("Veuillez renseigner toutes les capacités.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(tbxPassagerModif.Text, out int capacitePassager) || capacitePassager <= 0)
+            {
+                MessageBox.Show("La capacité des passagers doit être un nombre positif.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(tbxVehiculeBModif.Text, out int capaciteVehiculeB) || capaciteVehiculeB < 0)
+            {
+                MessageBox.Show("La capacité des véhicules catégorie B doit être un nombre positif ou égal à zéro.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(tbxVehiculeCModif.Text, out int capaciteVehiculeC) || capaciteVehiculeC < 0)
+            {
+                MessageBox.Show("La capacité des véhicules catégorie C doit être un nombre positif ou égal à zéro.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -112,21 +130,21 @@ namespace Projet_atlantik
                     cmd.Parameters.AddWithValue("@nobateau", selectedBateau.GetNoBateau());
 
                     cmd.Parameters.AddWithValue("@lettrecategorie", "A");
-                    cmd.Parameters.AddWithValue("@capacitemax", Convert.ToInt32(tbxPassagerModif.Text));
+                    cmd.Parameters.AddWithValue("@capacitemax", capacitePassager);
                     cmd.ExecuteNonQuery();
 
                     cmd.Parameters["@lettrecategorie"].Value = "B";
-                    cmd.Parameters["@capacitemax"].Value = Convert.ToInt32(tbxVehiculeBModif.Text);
+                    cmd.Parameters["@capacitemax"].Value = capaciteVehiculeB;
                     cmd.ExecuteNonQuery();
 
                     cmd.Parameters["@lettrecategorie"].Value = "C";
-                    cmd.Parameters["@capacitemax"].Value = Convert.ToInt32(tbxVehiculeCModif.Text);
+                    cmd.Parameters["@capacitemax"].Value = capaciteVehiculeC;
                     cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors de la modification du bateau : {ex.Message}");
+                MessageBox.Show($"Erreur lors de la modification du bateau : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             finally
@@ -135,7 +153,8 @@ namespace Projet_atlantik
                     maCnx.Close();
             }
 
-            MessageBox.Show("Bateau modifié avec succès !");
+            MessageBox.Show("Bateau modifié avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
     }
 }

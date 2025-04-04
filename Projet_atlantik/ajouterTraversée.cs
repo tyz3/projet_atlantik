@@ -21,7 +21,7 @@ namespace Projet_atlantik
             RemplirNomBateau();
             RemplirSecteurs();
             RemplirLiaison();
-            
+
             dtpTraverséeJourDépart.CustomFormat = "MM/dd/yyyy";
             dtpTraverséeJourDépart.Format = DateTimePickerFormat.Custom;
             dtpTraverséeDateHeureDépart.CustomFormat = "HH:mm";
@@ -139,12 +139,54 @@ namespace Projet_atlantik
         {
             try
             {
-                if (maCnx.State != ConnectionState.Open)
-                    maCnx.Open();
+                if (cmbbxLiaisonAjouterTraversée.SelectedItem == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner une liaison.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (cmbbxBateauAjouterTraversée.SelectedItem == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner un bateau.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (lstbxSecteursAjouterTraversée.SelectedItem == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner un secteur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dtpTraverséeJourDépart.Value == null || dtpTraverséeDateHeureDépart.Value == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner une date et une heure de départ valides.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dtpTraverséeDateJourArrivée.Value == null || dtpTraverséeDateHeureArrivée.Value == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner une date et une heure d'arrivée valides.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dtpTraverséeDateHeureArrivée.Value < dtpTraverséeDateHeureDépart.Value)
+                {
+                    MessageBox.Show("L'heure d'arrivée ne peut pas être antérieure à l'heure de départ.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 liaisonClass l = (liaisonClass)cmbbxLiaisonAjouterTraversée.SelectedItem;
                 bateauClass b = (bateauClass)cmbbxBateauAjouterTraversée.SelectedItem;
                 secteurClass secteur = (secteurClass)lstbxSecteursAjouterTraversée.SelectedItem;
+
+                if (l == null || b == null || secteur == null)
+                {
+                    MessageBox.Show("Tous les champs doivent être sélectionnés avant l'ajout.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (maCnx.State != ConnectionState.Open)
+                    maCnx.Open();
 
                 string query = "INSERT INTO traversee (NOLIAISON, NOBATEAU, DATEHEUREDEPART, DATEHEUREARRIVEE) " +
                     "VALUES (@noliaison, @nobateau, @dateheuredepart, @dateheurearrivee)";
@@ -156,18 +198,19 @@ namespace Projet_atlantik
                     cmd.Parameters.AddWithValue("@dateheurearrivee", dtpTraverséeDateJourArrivée.Value.Date.Add(dtpTraverséeDateHeureArrivée.Value.TimeOfDay).AddSeconds(-dtpTraverséeDateHeureArrivée.Value.Second));
                     cmd.ExecuteNonQuery();
                 }
+
+                MessageBox.Show("Traversée ajoutée avec succès !");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors de l'ajout des capacités du bateau : {ex.Message}");
-                return;
+                MessageBox.Show($"Erreur lors de l'ajout de la traversée : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 if (maCnx.State == ConnectionState.Open)
                     maCnx.Close();
             }
-            MessageBox.Show("Traversée ajoutée avec succès !");
         }
+
     }
 }

@@ -18,18 +18,12 @@ namespace Projet_atlantik
 
         private void ChargerParametres()
         {
-
             try
             {
-
-
-
-
                 if (maCnx.State != ConnectionState.Open)
                 {
                     maCnx.Open();
                 }
-
 
                 string query = "SELECT SITE_PB, RANG_PB, IDENTIFIANT_PB, CLEHMAC_PB, ENPRODUCTION, MELSITE FROM parametres LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(query, maCnx);
@@ -59,23 +53,24 @@ namespace Projet_atlantik
 
         private void btnParametre_Click(object sender, EventArgs e)
         {
-            if (maCnx.State != ConnectionState.Open)
-            {
-                maCnx.Open();
-            }
-
             if (string.IsNullOrWhiteSpace(tbxsiteParametre.Text) ||
                 string.IsNullOrWhiteSpace(tbxRangParametre.Text) ||
                 string.IsNullOrWhiteSpace(tbxIdentifiantParametre.Text) ||
                 string.IsNullOrWhiteSpace(tbxHMACParametre.Text) ||
                 string.IsNullOrWhiteSpace(tbxMelSiteParametre.Text))
             {
-                MessageBox.Show("Veuillez remplir tous les champs.");
+                MessageBox.Show("Veuillez remplir tous les champs.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+
             try
             {
+                if (maCnx.State != ConnectionState.Open)
+                {
+                    maCnx.Open();
+                }
+
                 string query = "UPDATE parametres SET SITE_PB = @sitepb, RANG_PB = @rangpb, IDENTIFIANT_PB = @identifiantpb, " +
                                "CLEHMAC_PB = @clehmac, ENPRODUCTION = @enproduction, MELSITE = @melsite";
 

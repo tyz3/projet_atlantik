@@ -19,7 +19,7 @@ namespace Projet_atlantik
         {
             InitializeComponent();
             this.maCnx = connection;
-           
+
         }
 
         private void tarif_Load(object sender, EventArgs e)
@@ -202,7 +202,7 @@ namespace Projet_atlantik
 
             if (lstbxTarif.SelectedItem == null || cmbbxTarifLiaison.SelectedItem == null || cmbbxTarifPeriode.SelectedItem == null)
             {
-                MessageBox.Show("Veuillez sélectionner un secteur, une liaison et une période.");
+                MessageBox.Show("Veuillez sélectionner un secteur, une liaison et une période.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -224,56 +224,69 @@ namespace Projet_atlantik
             {
                 if (!string.IsNullOrEmpty(tbxTarif.Text))
                 {
-                    tarifSaisi = true; 
+                    tarifSaisi = true;
                     break;
                 }
             }
 
             if (!tarifSaisi)
             {
-                MessageBox.Show("Veuillez renseigner au moins un tarif.");
+                MessageBox.Show("Veuillez renseigner au moins un tarif.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            foreach (TextBox tbxTarif in textBoxes)
+            {
+                if (!string.IsNullOrWhiteSpace(tbxTarif.Text))
+                {
+                    if (!double.TryParse(tbxTarif.Text, out double tarif) || tarif <= 0)
+                    {
+                        MessageBox.Show($"Le tarif pour {tbxTarif.Tag} doit être un nombre positif.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
 
             foreach (TextBox tbxTarif in textBoxes)
             {
                 string lettreCategorie = tbxTarif.Tag.ToString().Substring(0, 1);
                 string type = tbxTarif.Tag.ToString().Substring(1);
-                double tarif;
 
-                if (double.TryParse(tbxTarif.Text, out tarif))
+                if (!double.TryParse(tbxTarif.Text, out double tarif) || tarif <= 0)
                 {
-                    string query = "INSERT INTO tarifer (NOPERIODE, LETTRECATEGORIE, NOTYPE, NOLIAISON, TARIF) " +
-                                   "VALUES (@periode, @lettrecategorie, @notype, @noliaison, @tarif)";
+                    MessageBox.Show($"Le tarif pour {tbxTarif.Tag} doit être un nombre positif.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    try
-                    {
-                        if (maCnx.State == ConnectionState.Closed)
-                            maCnx.Open();
+                string query = "INSERT INTO tarifer (NOPERIODE, LETTRECATEGORIE, NOTYPE, NOLIAISON, TARIF) " +
+                               "VALUES (@periode, @lettrecategorie, @notype, @noliaison, @tarif)";
 
-                        MySqlCommand cmd = new MySqlCommand(query, maCnx);
-                        cmd.Parameters.AddWithValue("@periode", periode.GetNoPeriode());
-                        cmd.Parameters.AddWithValue("@lettrecategorie", lettreCategorie);
-                        cmd.Parameters.AddWithValue("@notype", type);
-                        cmd.Parameters.AddWithValue("@noliaison", liaison.GetNoLiaison());
-                        cmd.Parameters.AddWithValue("@tarif", tarif);
-                        cmd.ExecuteNonQuery();
+                try
+                {
+                    if (maCnx.State == ConnectionState.Closed)
+                        maCnx.Open();
 
-                        
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show("Erreur lors de l'ajout: " + ex.Message);
-                    }
-                    finally
-                    {
-                        maCnx.Close();
-                    }
-                    MessageBox.Show("Tarifs ajouté avec succès.");
+                    MySqlCommand cmd = new MySqlCommand(query, maCnx);
+                    cmd.Parameters.AddWithValue("@periode", periode.GetNoPeriode());
+                    cmd.Parameters.AddWithValue("@lettrecategorie", lettreCategorie);
+                    cmd.Parameters.AddWithValue("@notype", type);
+                    cmd.Parameters.AddWithValue("@noliaison", liaison.GetNoLiaison());
+                    cmd.Parameters.AddWithValue("@tarif", tarif);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erreur lors de l'ajout : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    maCnx.Close();
                 }
             }
+
+            MessageBox.Show("Tarifs ajoutés avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
 
     }
