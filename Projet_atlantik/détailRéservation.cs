@@ -109,10 +109,7 @@ namespace ProjetAtlantik
 
             string query = @"
                 SELECT 
-                    r.NORESERVATION, 
-                    CONCAT(p1.NOM, ' - ', p2.NOM) AS Liaison,
-                    r.NOTRAVERSEE, 
-                    t.DATEHEUREDEPART 
+                r.NORESERVATION, CONCAT(p1.NOM, ' - ', p2.NOM) AS Liaison,r.NOTRAVERSEE, t.DATEHEUREDEPART 
                 FROM reservation r
                 JOIN traversee t ON r.NOTRAVERSEE = t.NOTRAVERSEE
                 JOIN liaison l ON t.NOLIAISON = l.NOLIAISON
@@ -122,7 +119,7 @@ namespace ProjetAtlantik
 
             try
             {
-                viderGbx(gbxRéservation);
+               
                 lvRéservation.Items.Clear();
 
                 if (maCnx.State == ConnectionState.Closed)
@@ -170,10 +167,12 @@ namespace ProjetAtlantik
             }
         }
 
+
+
+
+
         private void AfficherDétailsRéservation(string noReservation)
         {
-            viderGbx(gbxRéservation);
-
             if (maCnx == null)
             {
                 MessageBox.Show("Connexion à la base de données non initialisée.");
@@ -186,19 +185,22 @@ namespace ProjetAtlantik
                 return;
             }
 
+ 
+            ViderGbx(gbxRéservation);
+
             string query = @"
-                SELECT 
-                    SUM(CASE WHEN t.LIBELLE LIKE 'Adulte%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbAdultes,
-                    SUM(CASE WHEN t.LIBELLE LIKE 'Junior%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbJuniors,
-                    SUM(CASE WHEN t.LIBELLE LIKE 'Enfant%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbEnfants,
-                    SUM(CASE WHEN t.LIBELLE LIKE 'Voiture%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbVoitures,
-                    r.MONTANTTOTAL, 
-                    r.MODEREGLEMENT
-                FROM enregistrer e
-                JOIN type t ON e.LETTRECATEGORIE = t.LETTRECATEGORIE AND e.NOTYPE = t.NOTYPE
-                JOIN reservation r ON e.NORESERVATION = r.NORESERVATION
-                WHERE e.NORESERVATION = @noReservation
-                GROUP BY r.MONTANTTOTAL, r.MODEREGLEMENT";
+        SELECT 
+            SUM(CASE WHEN t.LIBELLE LIKE 'Adulte%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbAdultes,
+            SUM(CASE WHEN t.LIBELLE LIKE 'Junior%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbJuniors,
+            SUM(CASE WHEN t.LIBELLE LIKE 'Enfant%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbEnfants,
+            SUM(CASE WHEN t.LIBELLE LIKE 'Voiture%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbVoitures,
+            r.MONTANTTOTAL, 
+            r.MODEREGLEMENT
+        FROM enregistrer e
+        JOIN type t ON e.LETTRECATEGORIE = t.LETTRECATEGORIE AND e.NOTYPE = t.NOTYPE
+        JOIN reservation r ON e.NORESERVATION = r.NORESERVATION
+        WHERE e.NORESERVATION = @noReservation
+        GROUP BY r.MONTANTTOTAL, r.MODEREGLEMENT";
 
             try
             {
@@ -213,26 +215,18 @@ namespace ProjetAtlantik
 
                 if (reader.Read())
                 {
-                    int nbAdultes = reader.GetInt32("nbAdultes");
-                    int nbJuniors = reader.GetInt32("nbJuniors");
-                    int nbEnfants = reader.GetInt32("nbEnfants");
-                    int nbVoitures = reader.GetInt32("nbVoitures");
-                    double montantTotal = reader.GetDouble("MONTANTTOTAL");
-                    string modePaiement = reader.GetString("MODEREGLEMENT");
-
-                    Label[] labels = {
-                        new Label { Text = $"Adulte : {nbAdultes}", Location = new Point(5, 25), AutoSize = true },
-                        new Label { Text = $"Junior 8 à 18 ans : {nbJuniors}", Location = new Point(5, 50), AutoSize = true },
-                        new Label { Text = $"Enfant 0 à 7 ans : {nbEnfants}", Location = new Point(5, 75), AutoSize = true },
-                        new Label { Text = $"Voiture long.inf.5m : {nbVoitures}", Location = new Point(5, 100), AutoSize = true },
-                        new Label { Text = $"Montant total : {montantTotal} euros", Location = new Point(5, 125), AutoSize = true },
-                        new Label { Text = $"Réglé par : {modePaiement}", Location = new Point(5, 150), AutoSize = true }
-                    };
-
-                    foreach (Label lbl in labels)
-                    {
-                        gbxRéservation.Controls.Add(lbl);
-                    }
+                    lblAdulte2.Text = reader.GetInt32("nbAdultes").ToString();
+                    lblAdulte2.Tag = "del";
+                    lblJunior2.Text = reader.GetInt32("nbJuniors").ToString();
+                    lblJunior2.Tag = "del";
+                    lblEnfant2.Text = reader.GetInt32("nbEnfants").ToString();
+                    lblEnfant2.Tag = "del";
+                    lblVoiture2.Text = reader.GetInt32("nbVoitures").ToString();
+                    lblVoiture2.Tag = "del";
+                    lblmontant2.Text = reader.GetDecimal("MONTANTTOTAL").ToString("C2");
+                    lblmontant2.Tag = "del";
+                    lblPayement2.Text = reader.GetString("MODEREGLEMENT");
+                    lblPayement2.Tag = "del";
                 }
 
                 reader.Close();
@@ -250,13 +244,8 @@ namespace ProjetAtlantik
             }
         }
 
-        private void viderGbx(GroupBox gbx)
-        {
-            foreach (var label in gbx.Controls.OfType<Label>().ToList())
-            {
-                gbx.Controls.Remove(label);
-            }
-        }
+
+
 
         private void lvRéservation_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -266,8 +255,24 @@ namespace ProjetAtlantik
                 return;
             }
 
+
+
             string noReservation = lvRéservation.SelectedItems[0].Tag.ToString();
             AfficherDétailsRéservation(noReservation);
         }
+        private void ViderGbx(GroupBox gbx)
+        {
+            foreach (var label in gbx.Controls.OfType<Label>().ToList())
+            {
+                if (label.Tag == "del")
+                    lblAdulte2.Text = "";
+                lblJunior2.Text = "";
+                lblEnfant2.Text = "";
+                lblVoiture2.Text = "";
+                lblmontant2.Text = "";
+                lblPayement2.Text = "";
+            }
+        }
+        
     }
 }

@@ -150,7 +150,7 @@ namespace Projet_atlantik
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors du chargement des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erreur  : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
