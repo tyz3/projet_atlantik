@@ -96,3 +96,4 @@ C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_at
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.afficherTraversée.resources
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.menu.resources
 C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\Projet_atlantik.modifierParametre.resources
+C:\Users\turgis\source\repos\Projet_atlantik\Projet_atlantik\obj\Debug\ProjetAtlantik.détailRéservation.resources

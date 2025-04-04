@@ -117,6 +117,13 @@
       <DependentUpon>ajouterTraversée.cs</DependentUpon>
     </Compile>
     <Compile Include="bateauClass.cs" />
+    <Compile Include="clientClass.cs" />
+    <Compile Include="détailRéservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="détailRéservation.Designer.cs">
+      <DependentUpon>détailRéservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +187,9 @@
     <EmbeddedResource Include="ajouterTraversée.resx">
       <DependentUpon>ajouterTraversée.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="détailRéservation.resx">
+      <DependentUpon>détailRéservation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="menu.resx">
       <DependentUpon>menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,9 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="image_menu.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Ocean-Nova.jpg" />

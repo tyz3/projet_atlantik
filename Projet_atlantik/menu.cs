@@ -83,7 +83,8 @@ namespace Projet_atlantik
 
         private void menuAfficherRéservation_Click(object sender, EventArgs e)
         {
-
+            détailRéservation détailRéservationForm = new détailRéservation(maCnx);
+            détailRéservationForm.Show();
         }
     }
 }
